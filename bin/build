@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+
+rm -rf public .development && compass compile --sass-dir sass --css-dir static/css && hugo
