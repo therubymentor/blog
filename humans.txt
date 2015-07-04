@@ -1,0 +1,14 @@
+/* TEAM */
+
+  Developer:    Jim OKelly
+
+/* SITE */
+
+  Standards:    HTML5, CSS3
+  Microformats: hCard, Open Graph
+
+  Components:   Hugo, Skeleton CSS, Rake
+  Software:     vim, git, rsync
+
+  Fonts:        FF Tisa Web Pro <https://typekit.com/fonts/ff-tisa-web-pro/>
+                Yanone Kaffeesatz <http://www.yanone.de/typedesign/kaffeesatz/>
