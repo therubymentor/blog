@@ -1,0 +1,81 @@
+{{ partial "header.html" . }}
+<div>
+  <div class="container">
+    <div class="row">
+      <header class="sixteen columns" id="main_header">
+        <a class="logo_link" href="/"><h1 id="logo">RubyMentor</h1></a>
+      </header>
+    </div>
+    <div id="hcard-Jim-OKelly" class="vcard">
+      <div class="row remove-bottom">
+        <div class="four columns">
+          <div class="photo-container">
+            <img src="images/jim_okelly.png" 
+                 alt="Jim OKelly" class="photo" />
+          </div>
+        </div>
+        <div class="twelve columns">
+          <h1 class="main-title">
+            My name is
+            <span class="fn n">
+              <span class="given-name">Jim</span>
+              <span class="family-name">OKelly</span></span>. I’m a
+              <span class="role">Rubyist and a Technology Educator</span>.
+            </span>
+          </h1>
+          <div class="hidden"><a class="org url" href="http://blog.rubymentor.io/">rubymentor</a></div>
+        </div>
+      </div>
+      <div class="row remove-bottom">
+        <div class="twelve columns">
+          <div id="articles">
+            <h2>Articles</h2>
+            {{ range where .Site.Pages "Type" "article" }}
+            <div class="hentry article add-bottom">
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <section class="article-summary">{{ .Params.summary }}</section>
+            </div>
+            {{ end }}
+          </div>
+
+          <div id="current-projects">
+            <h2>My day job is mentoring:</h2>
+
+            <div class="project add-bottom">
+              <h3><a href="https://codementor.io/rubymentor">CodeMentor</a></h3>
+              <section class="project-summary">I teach people Ruby, Rails, and
+              Javascript daily at CodeMentor and I am the #1 Ruby mentor there.</section>
+            </div>
+
+            <div class="project add-bottom">
+              <h3><a href="https://rubymentor.io/plans">Monthly Apprenticeship Plans</a></h3>
+              <section class="project-summary">For new and old developers who want an
+              ongoing technolgoy education in Ruby, Rails, and Javascript I have
+              monthly subscription based programs.</section>
+            </div>
+
+            <div class="project add-bottom">
+              <h3><a href="https://rubymentor.io/students">Monthly Student Plans</a></h3>
+              <section class="project-summary">For students who want an
+              ongoing technolgoy education in Ruby, Rails, and Javascript I have
+              monthly subscription based programs at a discount.</section>
+            </div>
+
+          </div>
+
+          <div id="rates">
+            <h2>Rates</h2>
+            <p>My rates start at <strong>$145</strong> per hour for commercial development.</p>
+          </div>
+        </div>
+        <div class="four columns">
+          <h3>Email me</h3>
+          <p><a class="email jabber" href="mailto:jim@rubymentor.io">jim@rubymentor.io</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{ partial "footer.html" }}

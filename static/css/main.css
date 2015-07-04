@@ -1,0 +1,1525 @@
+/* #Variables
+================================================== */
+/* #Imports
+================================================== */
+/*
+* Skeleton V1.1
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 8/17/2011
+*/
+/* Table of Contents
+==================================================
+    #Base 960 Grid
+    #Tablet (Portrait)
+    #Mobile (Portrait)
+    #Mobile (Landscape)
+    #Clearing */
+/* #Base 960 Grid
+================================================== */
+/* line 24, ../../sass/_skeleton.scss */
+.container {
+  position: relative;
+  width: 960px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* line 25, ../../sass/_skeleton.scss */
+.column, .columns {
+  float: left;
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* line 26, ../../sass/_skeleton.scss */
+.row {
+  margin-bottom: 25px;
+}
+
+/* Nested Column Classes */
+/* line 29, ../../sass/_skeleton.scss */
+.column.alpha, .columns.alpha {
+  margin-left: 0;
+}
+
+/* line 30, ../../sass/_skeleton.scss */
+.column.omega, .columns.omega {
+  margin-right: 0;
+}
+
+/* Base Grid */
+/* line 33, ../../sass/_skeleton.scss */
+.container .one.column {
+  width: 40px;
+}
+
+/* line 34, ../../sass/_skeleton.scss */
+.container .two.columns {
+  width: 100px;
+}
+
+/* line 35, ../../sass/_skeleton.scss */
+.container .three.columns {
+  width: 160px;
+}
+
+/* line 36, ../../sass/_skeleton.scss */
+.container .four.columns {
+  width: 220px;
+}
+
+/* line 37, ../../sass/_skeleton.scss */
+.container .five.columns {
+  width: 280px;
+}
+
+/* line 38, ../../sass/_skeleton.scss */
+.container .six.columns {
+  width: 340px;
+}
+
+/* line 39, ../../sass/_skeleton.scss */
+.container .seven.columns {
+  width: 400px;
+}
+
+/* line 40, ../../sass/_skeleton.scss */
+.container .eight.columns {
+  width: 460px;
+}
+
+/* line 41, ../../sass/_skeleton.scss */
+.container .nine.columns {
+  width: 520px;
+}
+
+/* line 42, ../../sass/_skeleton.scss */
+.container .ten.columns {
+  width: 580px;
+}
+
+/* line 43, ../../sass/_skeleton.scss */
+.container .eleven.columns {
+  width: 640px;
+}
+
+/* line 44, ../../sass/_skeleton.scss */
+.container .twelve.columns {
+  width: 700px;
+}
+
+/* line 45, ../../sass/_skeleton.scss */
+.container .thirteen.columns {
+  width: 760px;
+}
+
+/* line 46, ../../sass/_skeleton.scss */
+.container .fourteen.columns {
+  width: 820px;
+}
+
+/* line 47, ../../sass/_skeleton.scss */
+.container .fifteen.columns {
+  width: 880px;
+}
+
+/* line 48, ../../sass/_skeleton.scss */
+.container .sixteen.columns {
+  width: 940px;
+}
+
+/* line 50, ../../sass/_skeleton.scss */
+.container .one-third.column {
+  width: 300px;
+}
+
+/* line 51, ../../sass/_skeleton.scss */
+.container .two-thirds.column {
+  width: 620px;
+}
+
+/* Offsets */
+/* line 54, ../../sass/_skeleton.scss */
+.container .offset-by-one {
+  padding-left: 60px;
+}
+
+/* line 55, ../../sass/_skeleton.scss */
+.container .offset-by-two {
+  padding-left: 120px;
+}
+
+/* line 56, ../../sass/_skeleton.scss */
+.container .offset-by-three {
+  padding-left: 180px;
+}
+
+/* line 57, ../../sass/_skeleton.scss */
+.container .offset-by-four {
+  padding-left: 240px;
+}
+
+/* line 58, ../../sass/_skeleton.scss */
+.container .offset-by-five {
+  padding-left: 300px;
+}
+
+/* line 59, ../../sass/_skeleton.scss */
+.container .offset-by-six {
+  padding-left: 360px;
+}
+
+/* line 60, ../../sass/_skeleton.scss */
+.container .offset-by-seven {
+  padding-left: 420px;
+}
+
+/* line 61, ../../sass/_skeleton.scss */
+.container .offset-by-eight {
+  padding-left: 480px;
+}
+
+/* line 62, ../../sass/_skeleton.scss */
+.container .offset-by-nine {
+  padding-left: 540px;
+}
+
+/* line 63, ../../sass/_skeleton.scss */
+.container .offset-by-ten {
+  padding-left: 600px;
+}
+
+/* line 64, ../../sass/_skeleton.scss */
+.container .offset-by-eleven {
+  padding-left: 660px;
+}
+
+/* line 65, ../../sass/_skeleton.scss */
+.container .offset-by-twelve {
+  padding-left: 720px;
+}
+
+/* line 66, ../../sass/_skeleton.scss */
+.container .offset-by-thirteen {
+  padding-left: 780px;
+}
+
+/* line 67, ../../sass/_skeleton.scss */
+.container .offset-by-fourteen {
+  padding-left: 840px;
+}
+
+/* line 68, ../../sass/_skeleton.scss */
+.container .offset-by-fifteen {
+  padding-left: 900px;
+}
+
+/* #Tablet (Portrait)
+================================================== */
+/* Note: Design for a width of 768px */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 78, ../../sass/_skeleton.scss */
+  .container {
+    width: 768px;
+  }
+
+  /* line 79, ../../sass/_skeleton.scss */
+  .container .column,
+  .container .columns {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  /* line 81, ../../sass/_skeleton.scss */
+  .column.alpha, .columns.alpha {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  /* line 82, ../../sass/_skeleton.scss */
+  .column.omega, .columns.omega {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+
+  /* line 84, ../../sass/_skeleton.scss */
+  .container .one.column {
+    width: 28px;
+  }
+
+  /* line 85, ../../sass/_skeleton.scss */
+  .container .two.columns {
+    width: 76px;
+  }
+
+  /* line 86, ../../sass/_skeleton.scss */
+  .container .three.columns {
+    width: 124px;
+  }
+
+  /* line 87, ../../sass/_skeleton.scss */
+  .container .four.columns {
+    width: 172px;
+  }
+
+  /* line 88, ../../sass/_skeleton.scss */
+  .container .five.columns {
+    width: 220px;
+  }
+
+  /* line 89, ../../sass/_skeleton.scss */
+  .container .six.columns {
+    width: 268px;
+  }
+
+  /* line 90, ../../sass/_skeleton.scss */
+  .container .seven.columns {
+    width: 316px;
+  }
+
+  /* line 91, ../../sass/_skeleton.scss */
+  .container .eight.columns {
+    width: 364px;
+  }
+
+  /* line 92, ../../sass/_skeleton.scss */
+  .container .nine.columns {
+    width: 412px;
+  }
+
+  /* line 93, ../../sass/_skeleton.scss */
+  .container .ten.columns {
+    width: 460px;
+  }
+
+  /* line 94, ../../sass/_skeleton.scss */
+  .container .eleven.columns {
+    width: 508px;
+  }
+
+  /* line 95, ../../sass/_skeleton.scss */
+  .container .twelve.columns {
+    width: 556px;
+  }
+
+  /* line 96, ../../sass/_skeleton.scss */
+  .container .thirteen.columns {
+    width: 604px;
+  }
+
+  /* line 97, ../../sass/_skeleton.scss */
+  .container .fourteen.columns {
+    width: 652px;
+  }
+
+  /* line 98, ../../sass/_skeleton.scss */
+  .container .fifteen.columns {
+    width: 700px;
+  }
+
+  /* line 99, ../../sass/_skeleton.scss */
+  .container .sixteen.columns {
+    width: 748px;
+  }
+
+  /* line 101, ../../sass/_skeleton.scss */
+  .container .one-third.column {
+    width: 236px;
+  }
+
+  /* line 102, ../../sass/_skeleton.scss */
+  .container .two-thirds.column {
+    width: 492px;
+  }
+
+  /* Offsets */
+  /* line 105, ../../sass/_skeleton.scss */
+  .container .offset-by-one {
+    padding-left: 48px;
+  }
+
+  /* line 106, ../../sass/_skeleton.scss */
+  .container .offset-by-two {
+    padding-left: 96px;
+  }
+
+  /* line 107, ../../sass/_skeleton.scss */
+  .container .offset-by-three {
+    padding-left: 144px;
+  }
+
+  /* line 108, ../../sass/_skeleton.scss */
+  .container .offset-by-four {
+    padding-left: 192px;
+  }
+
+  /* line 109, ../../sass/_skeleton.scss */
+  .container .offset-by-five {
+    padding-left: 240px;
+  }
+
+  /* line 110, ../../sass/_skeleton.scss */
+  .container .offset-by-six {
+    padding-left: 288px;
+  }
+
+  /* line 111, ../../sass/_skeleton.scss */
+  .container .offset-by-seven {
+    padding-left: 336px;
+  }
+
+  /* line 112, ../../sass/_skeleton.scss */
+  .container .offset-by-eight {
+    padding-left: 348px;
+  }
+
+  /* line 113, ../../sass/_skeleton.scss */
+  .container .offset-by-nine {
+    padding-left: 432px;
+  }
+
+  /* line 114, ../../sass/_skeleton.scss */
+  .container .offset-by-ten {
+    padding-left: 480px;
+  }
+
+  /* line 115, ../../sass/_skeleton.scss */
+  .container .offset-by-eleven {
+    padding-left: 528px;
+  }
+
+  /* line 116, ../../sass/_skeleton.scss */
+  .container .offset-by-twelve {
+    padding-left: 576px;
+  }
+
+  /* line 117, ../../sass/_skeleton.scss */
+  .container .offset-by-thirteen {
+    padding-left: 624px;
+  }
+
+  /* line 118, ../../sass/_skeleton.scss */
+  .container .offset-by-fourteen {
+    padding-left: 672px;
+  }
+
+  /* line 119, ../../sass/_skeleton.scss */
+  .container .offset-by-fifteen {
+    padding-left: 720px;
+  }
+}
+/*  #Mobile (Portrait)
+================================================== */
+/* Note: Design for a width of 320px */
+@media only screen and (max-width: 767px) {
+  /* line 129, ../../sass/_skeleton.scss */
+  .container {
+    width: 300px;
+  }
+
+  /* line 130, ../../sass/_skeleton.scss */
+  .columns, .column {
+    margin: 0;
+  }
+
+  /* line 132, ../../sass/_skeleton.scss */
+  .container .one.column,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .thirteen.columns,
+  .container .fourteen.columns,
+  .container .fifteen.columns,
+  .container .sixteen.columns,
+  .container .one-third.column,
+  .container .two-thirds.column {
+    width: 300px;
+  }
+
+  /* Offsets */
+  /* line 152, ../../sass/_skeleton.scss */
+  .container .offset-by-one,
+  .container .offset-by-two,
+  .container .offset-by-three,
+  .container .offset-by-four,
+  .container .offset-by-five,
+  .container .offset-by-six,
+  .container .offset-by-seven,
+  .container .offset-by-eight,
+  .container .offset-by-nine,
+  .container .offset-by-ten,
+  .container .offset-by-eleven,
+  .container .offset-by-twelve,
+  .container .offset-by-thirteen,
+  .container .offset-by-fourteen,
+  .container .offset-by-fifteen {
+    padding-left: 0;
+  }
+}
+/* #Mobile (Landscape)
+================================================== */
+@media only screen and (min-width: 680px) and (max-width: 767px) {
+  /* line 175, ../../sass/_skeleton.scss */
+  .container {
+    width: 640px;
+  }
+
+  /* line 176, ../../sass/_skeleton.scss */
+  .columns, .column {
+    margin: 0;
+  }
+
+  /* line 178, ../../sass/_skeleton.scss */
+  .container .one.column,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .thirteen.columns,
+  .container .fourteen.columns,
+  .container .fifteen.columns,
+  .container .sixteen.columns,
+  .container .one-third.column,
+  .container .two-thirds.column {
+    width: 640px;
+  }
+}
+/* Note: Design for a width of 480px */
+@media only screen and (min-width: 480px) and (max-width: 680px) {
+  /* line 201, ../../sass/_skeleton.scss */
+  .container {
+    width: 420px;
+  }
+
+  /* line 202, ../../sass/_skeleton.scss */
+  .columns, .column {
+    margin: 0;
+  }
+
+  /* line 204, ../../sass/_skeleton.scss */
+  .container .one.column,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .thirteen.columns,
+  .container .fourteen.columns,
+  .container .fifteen.columns,
+  .container .sixteen.columns,
+  .container .one-third.column,
+  .container .two-thirds.column {
+    width: 420px;
+  }
+}
+/* #Clearing
+================================================== */
+/* Self Clearing Goodness */
+/* line 229, ../../sass/_skeleton.scss */
+.container:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+/* line 233, ../../sass/_skeleton.scss */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* line 243, ../../sass/_skeleton.scss */
+.row:after,
+.clearfix:after {
+  clear: both;
+}
+
+/* line 246, ../../sass/_skeleton.scss */
+.row,
+.clearfix {
+  zoom: 1;
+}
+
+/* You can also use a <br class="clear" /> to clear columns */
+/* line 251, ../../sass/_skeleton.scss */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/*background color*/
+/* line 2, ../../sass/_highlight.scss */
+.hljs {
+  font-family: Monaco,monospace;
+  font-size: 0.8em;
+  line-height: 1.5;
+  display: block;
+  padding: 0.3em 0.5em;
+  background: #151515;
+  margin-top: 0.6em;
+  margin-bottom: 2em;
+  word-wrap: break-word;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+/*selection color*/
+/* line 17, ../../sass/_highlight.scss */
+.hljs::selection,
+.hljs span::selection {
+  background: #373b41;
+}
+
+/* line 21, ../../sass/_highlight.scss */
+.hljs::-moz-selection,
+.hljs span::-moz-selection {
+  background: #373b41;
+}
+
+/*foreground color*/
+/* line 27, ../../sass/_highlight.scss */
+.hljs,
+.hljs-inheritance,
+.hljs-setting .hljs-value,
+.hljs-expression .hljs-variable,
+.hljs-expression .hljs-begin-block,
+.hljs-expression .hljs-end-block,
+.hljs-class .hljs-params,
+.hljs-function .hljs-params,
+.hljs-at_rule .hljs-preprocessor {
+  color: #E6E1DC;
+}
+
+/*color: fg_yellow*/
+/* line 40, ../../sass/_highlight.scss */
+.hljs-title,
+.hljs-constant,
+.hljs-inheritance .hljs-parent,
+.hljs-function .hljs-title,
+.hljs-class .hljs-title,
+.hljs-decorator,
+.hljs-tag .hljs-title,
+.hljs-header,
+.hljs-sub,
+.hljs-function {
+  color: #f0c674;
+}
+
+/* line 53, ../../sass/_highlight.scss */
+.hljs-keyword .hljs-common {
+  color: #627FC4;
+}
+
+/*color: fg_comment*/
+/* line 58, ../../sass/_highlight.scss */
+.hljs-comment,
+.hljs-javadoc,
+.hljs-output .hljs-value,
+.hljs-pi,
+.hljs-shebang,
+.hljs-template_comment,
+.hljs-doctype {
+  color: #707880;
+}
+
+/*color: fg_red*/
+/* line 69, ../../sass/_highlight.scss */
+.hljs-number,
+.hljs-literal,
+.hljs-deletion,
+.hljs-link_url,
+.hljs-symbol .hljs-string,
+.hljs-argument,
+.hljs-hexcolor,
+.hljs-input .hljs-prompt,
+.hljs-char {
+  color: #CE694E;
+}
+
+/* line 81, ../../sass/_highlight.scss */
+.hljs-symbol {
+  color: #8787D7;
+}
+
+/*color: fg_green*/
+/* line 86, ../../sass/_highlight.scss */
+.hljs-string,
+.hljs-special,
+.hljs-javadoctag,
+.hljs-addition,
+.hljs-important,
+.hljs-tag .hljs-value,
+.hljs-at.rule .hljs-keyword,
+.hljs-regexp,
+.hljs-attr_selector {
+  color: #99AD6A;
+}
+
+/*color: fg_purple*/
+/* line 99, ../../sass/_highlight.scss */
+.hljs-property,
+.hljs-envar,
+.hljs-code,
+.hljs-expression,
+.hljs-localvars,
+.hljs-id,
+.hljs-template_tag .hljs-filter .hljs-keyword {
+  color: #b294bb;
+}
+
+/* line 109, ../../sass/_highlight.scss */
+.hljs-variable .hljs-filter,
+.hljs-variable .hljs-filter .hljs-keyword,
+.hljs-variable .hljs-filter .hljs-argument,
+.hljs-variable {
+  color: #D8AEF8;
+}
+
+/*color: fg_blue*/
+/* line 117, ../../sass/_highlight.scss */
+.hljs-statement,
+.hljs-label,
+.hljs-keyword,
+.hljs-xmlDocTag,
+.hljs-function .hljs-keyword,
+.hljs-chunk,
+.hljs-cdata,
+.hljs-link_label,
+.hljs-bullet,
+.hljs-class .hljs-keyword,
+.hljs-smartquote,
+.hljs-method,
+.hljs-list .hljs-title,
+.hljs-tag {
+  color: #81a2be;
+}
+
+/*color: fg_aqua*/
+/* line 135, ../../sass/_highlight.scss */
+.hljs-pseudo,
+.hljs-exception,
+.hljs-annotation,
+.hljs-subst,
+.hljs-change,
+.hljs-cbracket,
+.hljs-operator,
+.hljs-horizontal_rule,
+.hljs-preprocessor .hljs-keyword,
+.hljs-typedef,
+.hljs-template_tag,
+.hljs-at_rule,
+.hljs-at_rule .hljs-string,
+.hljs-at_rule .hljs-keyword {
+  color: #8abeb7;
+}
+
+/*color: fg_orange*/
+/* line 154, ../../sass/_highlight.scss */
+.hljs-typename,
+.hljs-built_in,
+.hljs-setting,
+.hljs-structure,
+.hljs-link_reference,
+.hljs-attribute,
+.hljs-blockquote,
+.hljs-quoted,
+.hljs-class,
+.hljs-header {
+  color: #90C0DB;
+}
+
+/* line 167, ../../sass/_highlight.scss */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+/* line 171, ../../sass/_highlight.scss */
+.hljs-strong {
+  font-weight: bold;
+}
+
+/*
+* Skeleton V1.1
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 8/17/2011
+*/
+/* Table of Content
+==================================================
+  #Reset & Basics
+  #Basic Styles
+  #Site Styles
+  #Typography
+  #Links
+  #Lists
+  #Images
+  #Buttons
+  #Tabs
+  #Forms
+  #Misc */
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+/* line 27, ../../sass/_base.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 34, ../../sass/_base.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 36, ../../sass/_base.scss */
+body {
+  line-height: 1;
+}
+
+/* line 38, ../../sass/_base.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 40, ../../sass/_base.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 42, ../../sass/_base.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 46, ../../sass/_base.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* #Basic Styles
+================================================== */
+/* line 55, ../../sass/_base.scss */
+body {
+  background: #fff;
+  color: #333332;
+  line-height: 1.428;
+  font-weight: 400;
+  font-size: 1.4em;
+  font-size-adjust: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* #Typography
+================================================== */
+/* line 73, ../../sass/_base.scss */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-weight: inherit;
+}
+
+/* line 75, ../../sass/_base.scss */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: #333332;
+}
+
+/* line 80, ../../sass/_base.scss */
+h1 {
+  font-size: 50px;
+  line-height: 1.1;
+  margin-bottom: 17px;
+  letter-spacing: -1px;
+}
+
+/* line 81, ../../sass/_base.scss */
+h2 {
+  font-size: 24px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  margin-top: 25px;
+}
+
+/* line 82, ../../sass/_base.scss */
+h3 {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+/* line 83, ../../sass/_base.scss */
+h4 {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* line 84, ../../sass/_base.scss */
+h5 {
+  font-size: 17px;
+}
+
+/* line 86, ../../sass/_base.scss */
+p {
+  margin-bottom: 27px;
+}
+
+/* line 88, ../../sass/_base.scss */
+.subheader {
+  color: #777;
+}
+
+/* line 90, ../../sass/_base.scss */
+p img {
+  margin: 0;
+}
+
+/* line 91, ../../sass/_base.scss */
+p.lead {
+  font-size: 21px;
+  line-height: 27px;
+  color: #777;
+}
+
+/* line 93, ../../sass/_base.scss */
+em {
+  font-style: italic;
+}
+
+/* line 94, ../../sass/_base.scss */
+strong {
+  font-weight: bold;
+  color: #333;
+}
+
+/* line 95, ../../sass/_base.scss */
+small {
+  font-size: 80%;
+}
+
+/*  Blockquotes  */
+/* line 98, ../../sass/_base.scss */
+blockquote, blockquote p {
+  font-style: italic;
+}
+
+/* line 99, ../../sass/_base.scss */
+blockquote {
+  margin: 0 0 27px -25px;
+  padding-left: 25px;
+  border-left: 5px solid #c20518;
+}
+
+/* Horizontal line */
+/* line 102, ../../sass/_base.scss */
+hr {
+  border: solid #ddd;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* #Links
+================================================== */
+/* line 106, ../../sass/_base.scss */
+a, a:visited {
+  text-decoration: none;
+  outline: 0;
+}
+
+/* line 107, ../../sass/_base.scss */
+a:hover, a:focus {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* line 108, ../../sass/_base.scss */
+p a, p a:visited {
+  line-height: inherit;
+}
+
+/* #Lists
+================================================== */
+/* line 113, ../../sass/_base.scss */
+ul, ol {
+  margin-bottom: 20px;
+}
+
+/* line 114, ../../sass/_base.scss */
+ul {
+  list-style: none outside;
+}
+
+/* line 115, ../../sass/_base.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 116, ../../sass/_base.scss */
+ul ul, ul ol,
+ol ol, ol ul {
+  margin: 4px 0 5px 30px;
+  font-size: 90%;
+}
+
+/* line 118, ../../sass/_base.scss */
+ul ul li, ul ol li,
+ol ol li, ol ul li {
+  margin-bottom: 6px;
+}
+
+/* line 120, ../../sass/_base.scss */
+li {
+  margin-bottom: 0.2em;
+}
+
+/* line 121, ../../sass/_base.scss */
+ul.large li {
+  line-height: 21px;
+}
+
+/* line 122, ../../sass/_base.scss */
+li p {
+  line-height: 21px;
+}
+
+/* #Images
+================================================== */
+/* line 127, ../../sass/_base.scss */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* #Misc
+================================================== */
+/* line 133, ../../sass/_base.scss */
+.remove-bottom {
+  margin-bottom: 0 !important;
+}
+
+/* line 134, ../../sass/_base.scss */
+.half-bottom {
+  margin-bottom: 10px !important;
+}
+
+/* line 135, ../../sass/_base.scss */
+.add-bottom {
+  margin-bottom: 20px !important;
+}
+
+/* line 137, ../../sass/_base.scss */
+tbody tr {
+  background-color: #F8F8F8;
+  border-top: 1px solid #CCC;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 144, ../../sass/_base.scss */
+tr:nth-child(2n) {
+  background-color: white;
+}
+
+/* line 148, ../../sass/_base.scss */
+th, td {
+  border: 1px solid #CCC;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+/* line 155, ../../sass/_base.scss */
+th {
+  font-weight: bold;
+}
+
+/* #Typography
+================================================== */
+/* line 17, ../../sass/main.scss */
+body {
+  font-family: "ff-tisa-web-pro",Georgia,Cambria,serif;
+  border-top: 4px solid #c20518;
+}
+
+/* line 22, ../../sass/main.scss */
+a {
+  color: #c20518;
+}
+
+/* line 24, ../../sass/main.scss */
+.font-bold {
+  font-weight: 700;
+}
+
+/* line 25, ../../sass/main.scss */
+.font-normal {
+  font-weight: 400;
+}
+
+/* line 26, ../../sass/main.scss */
+.font-book {
+  font-weight: 300;
+}
+
+/* line 28, ../../sass/main.scss */
+.entry-title {
+  outline: 0;
+  word-wrap: break-word;
+}
+
+/* line 33, ../../sass/main.scss */
+.entry-summary, .entry-content {
+  line-height: 1.5;
+}
+
+/* line 37, ../../sass/main.scss */
+.vcard .photo {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+/* #Page Styles
+================================================== */
+/* line 45, ../../sass/main.scss */
+.hidden {
+  display: none;
+}
+
+/* line 47, ../../sass/main.scss */
+.highlight, p code, h4 code, li code {
+  word-wrap: break-word;
+  font-family: Monaco, Monospace;
+  font-weight: 700;
+}
+/* line 52, ../../sass/main.scss */
+.highlight pre, p code pre, h4 code pre, li code pre {
+  overflow: auto;
+}
+
+/* line 57, ../../sass/main.scss */
+p code, h4 code, li code {
+  font-size: 0.8em;
+  line-height: 1;
+  background: #F7F7F7;
+  padding: 0.1em 0.3em;
+  border-radius: 0.2em;
+  border: 1px solid #EBEBEB;
+}
+
+/* line 66, ../../sass/main.scss */
+.highlight {
+  font-size: 0.8em;
+  line-height: 1.5;
+  font-weight: bold;
+  padding: 0.3em 0.5em;
+  margin-top: 0.6em;
+  margin-bottom: 2em;
+}
+
+/* line 75, ../../sass/main.scss */
+p code {
+  white-space: nowrap;
+}
+
+/* line 79, ../../sass/main.scss */
+.social {
+  margin-bottom: 27px;
+}
+/* line 82, ../../sass/main.scss */
+.social li {
+  margin-bottom: 0.7em;
+}
+
+/* line 88, ../../sass/main.scss */
+#article .entry-summary {
+  margin-top: -0.8em;
+  margin-bottom: 1em;
+  font-weight: normal;
+  font-style: italic;
+}
+/* line 95, ../../sass/main.scss */
+#article ol, #article ul {
+  list-style: disc;
+  vertical-align: middle;
+  list-style-position: outside;
+}
+/* line 101, ../../sass/main.scss */
+#article .vcard {
+  margin-top: 2em;
+}
+/* line 104, ../../sass/main.scss */
+#article .vcard h2 {
+  font-size: 28px;
+  margin-top: 35px;
+}
+
+/* line 111, ../../sass/main.scss */
+#logo {
+  background: transparent url("/images/logo_square_small.png") no-repeat top center;
+  background-size: 192px 192px;
+  min-height: 192px;
+  text-indent: -6000em;
+  margin: 0;
+}
+
+/* #Media Queries
+================================================== */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  /* line 123, ../../sass/main.scss */
+  a.follow-on-twitter, a.follow-on-twitter:visited {
+    background-image: url("/images/small_twitter_bird_2x.png");
+    background-size: 30px 25px;
+  }
+
+  /* line 128, ../../sass/main.scss */
+  #logo {
+    background: transparent url("/images/logo_square_2x.png") no-repeat top center;
+  }
+}
+/* Larger than standard 960 (devices and browsers) */
+@media only screen and (min-width: 960px) {
+  /* line 135, ../../sass/main.scss */
+  #article, #page {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  /* line 139, ../../sass/main.scss */
+  #article h1, #page h1 {
+    font-size: 52px;
+  }
+  /* line 140, ../../sass/main.scss */
+  #article h2, #page h2 {
+    font-size: 28px;
+  }
+  /* line 141, ../../sass/main.scss */
+  #article h3, #page h3 {
+    font-size: 25px;
+  }
+  /* line 142, ../../sass/main.scss */
+  #article h4, #page h4 {
+    font-size: 22px;
+  }
+  /* line 144, ../../sass/main.scss */
+  #article article, #page article {
+    margin-top: 20px;
+    margin-bottom: 80px;
+  }
+  /* line 149, ../../sass/main.scss */
+  #article .entry-summary, #page .entry-summary {
+    margin-bottom: 1.6em;
+  }
+  /* line 154, ../../sass/main.scss */
+  #article .article-content h2, #page .article-content h2 {
+    margin-top: 45px;
+  }
+
+  /* line 158, ../../sass/main.scss */
+  .main-title {
+    margin-top: 25px;
+  }
+
+  /* line 159, ../../sass/main.scss */
+  .add-bottom {
+    margin-bottom: 30px !important;
+  }
+}
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+  /* line 165, ../../sass/main.scss */
+  h1 {
+    font-size: 40px;
+    margin-bottom: 18px;
+  }
+
+  /* line 170, ../../sass/main.scss */
+  .main-title {
+    font-size: 44px;
+  }
+
+  /* line 174, ../../sass/main.scss */
+  .photo-container {
+    text-align: center;
+  }
+  /* line 177, ../../sass/main.scss */
+  .photo-container img {
+    max-height: 220px;
+  }
+}
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 185, ../../sass/main.scss */
+  blockquote {
+    margin-left: -10px;
+    padding-left: 12px;
+  }
+
+  /* line 190, ../../sass/main.scss */
+  #article .vcard h2 {
+    font-size: 22px;
+    padding: 0;
+    margin-top: 26px;
+  }
+}
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+  /* line 199, ../../sass/main.scss */
+  h2 {
+    margin-bottom: 7px;
+  }
+
+  /* line 201, ../../sass/main.scss */
+  #logo {
+    margin-bottom: 0;
+    margin-top: 1px;
+    background-size: 192px 192px;
+    min-height: 200px;
+  }
+
+  /* line 209, ../../sass/main.scss */
+  #article ol, #article ul {
+    margin-left: 22px;
+  }
+  /* line 213, ../../sass/main.scss */
+  #article .vcard h2 {
+    font-size: 37px;
+    line-height: 1.3;
+    letter-spacing: -1px;
+    margin-top: 0;
+  }
+
+  /* line 222, ../../sass/main.scss */
+  .recent-articles h2 {
+    font-size: 28px;
+    line-height: 40px;
+    margin-bottom: 15px;
+  }
+  /* line 227, ../../sass/main.scss */
+  .recent-articles ul {
+    margin-bottom: 0;
+  }
+  /* line 230, ../../sass/main.scss */
+  .recent-articles ul li {
+    margin-bottom: 15px;
+  }
+  /* line 234, ../../sass/main.scss */
+  .recent-articles ul h3 {
+    font-size: 22px;
+  }
+  /* line 238, ../../sass/main.scss */
+  .recent-articles ul a {
+    display: block;
+    background: #fefefe;
+    height: 30px;
+    padding: 2px 0 0 10px;
+    border-left: 5px solid #fff;
+    margin-left: -10px;
+  }
+  /* line 245, ../../sass/main.scss */
+  .recent-articles ul a:hover {
+    border-color: #c20518;
+  }
+
+  /* line 254, ../../sass/main.scss */
+  #article #hcard-Jim-OKelly h2 {
+    margin-top: 0.3em;
+    font-size: 29px;
+    line-height: 1.4;
+  }
+}
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  /* line 265, ../../sass/main.scss */
+  body {
+    font-size: 18px;
+  }
+
+  /* line 267, ../../sass/main.scss */
+  #article .vcard h2 {
+    font-size: 34px;
+    line-height: 1.3;
+  }
+}
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+  /* line 275, ../../sass/main.scss */
+  body {
+    font-size: 16px;
+  }
+
+  /* line 277, ../../sass/main.scss */
+  h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  /* line 278, ../../sass/main.scss */
+  h2 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  /* line 279, ../../sass/main.scss */
+  h3 {
+    font-size: 17px;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+
+  /* line 280, ../../sass/main.scss */
+  h4 {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  /* line 282, ../../sass/main.scss */
+  blockquote {
+    margin-left: -10px;
+    padding-left: 12px;
+  }
+
+  /* line 287, ../../sass/main.scss */
+  p {
+    word-wrap: break-word;
+  }
+
+  /* line 289, ../../sass/main.scss */
+  .highlight, p code, h4 code, li code {
+    font-size: 12px;
+  }
+
+  /* line 290, ../../sass/main.scss */
+  .main-title {
+    font-size: 37px;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  /* line 291, ../../sass/main.scss */
+  .photo-container img {
+    height: 168px;
+    margin-bottom: 10px;
+  }
+
+  /* line 292, ../../sass/main.scss */
+  a.follow-on-twitter, a.follow-on-twitter:visited {
+    font-size: 0.9em;
+    background-image: none;
+  }
+}
+/* line 296, ../../sass/main.scss */
+#topNav .wrapper {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 1em;
+}
+
+/* line 303, ../../sass/main.scss */
+#topNav {
+  font-size: 0.8em;
+  padding: 1em 0;
+  color: #fff;
+  background: #222;
+}
+/* line 309, ../../sass/main.scss */
+#topNav a {
+  color: #fff;
+}
+/* line 313, ../../sass/main.scss */
+#topNav strong {
+  color: #999;
+  margin-right: 0.5em;
+}
+/* line 314, ../../sass/main.scss */
+#topNav strong a {
+  color: #FFF;
+}
+/* line 316, ../../sass/main.scss */
+#topNav .wrapper {
+  text-align: center;
+}
+/* line 317, ../../sass/main.scss */
+#topNav .more-info-button {
+  position: relative;
+  z-index: 25;
+}
+/* line 322, ../../sass/main.scss */
+#topNav .more-info-label {
+  display: inline;
+}
+/* line 326, ../../sass/main.scss */
+#topNav .more-info-container {
+  position: absolute;
+  top: .5em;
+  z-index: 20;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 20em;
+}
+/* line 336, ../../sass/main.scss */
+#topNav .more-info-links {
+  list-style: none;
+  display: inline;
+  margin: 0;
+}
+/* line 342, ../../sass/main.scss */
+#topNav .more-info {
+  display: inline-block;
+}
+/* line 345, ../../sass/main.scss */
+#topNav .more-info:after {
+  content: " |";
+}
+/* line 349, ../../sass/main.scss */
+#topNav .more-info:last-child:after {
+  content: "";
+}

@@ -1,0 +1,10 @@
+languageCode: "en-us"
+canonifyurls: false
+
+title: "RubyMentor"
+baseurl: "http://blog.rubymentor.io/"
+
+author:
+  name: "Jim OKelly"
+
+copyright: "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
