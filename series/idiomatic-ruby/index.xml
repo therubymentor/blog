@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Idiomatic Ruby on Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</title>
-    <link>http://blog.rubymentor.io/series/idiomatic-ruby/</link>
+    <link>//blog.rubymentor.io/series/idiomatic-ruby/</link>
     <description>Recent content in Idiomatic Ruby on Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Sat, 23 Nov 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://blog.rubymentor.io/series/idiomatic-ruby/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//blog.rubymentor.io/series/idiomatic-ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Introduction to Idiomatic Ruby</title>
-      <link>http://blog.rubymentor.io/idiomatic-ruby-1/</link>
+      <link>//blog.rubymentor.io/idiomatic-ruby-1/</link>
       <pubDate>Sat, 23 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.rubymentor.io/idiomatic-ruby-1/</guid>
+      <guid>//blog.rubymentor.io/idiomatic-ruby-1/</guid>
       <description>
 
 &lt;h2 id=&#34;just-because-it-runs-as-ruby-doesn-t-mean-it-is-ruby:bdec7a466a0d14d4fc6efa2a9be8b5a4&#34;&gt;Just because it runs AS Ruby doesn&amp;rsquo;t mean it IS Ruby!&lt;/h2&gt;
