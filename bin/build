@@ -1,3 +1,4 @@
 #! /usr/bin/env sh
 
-compass compile --sass-dir sass --css-dir static/css && hugo
+compass compile --sass-dir sass --css-dir static/css
+hugo

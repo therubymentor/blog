@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>//blog.rubymentor.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2014-11-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>//blog.rubymentor.io/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2014-11-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>//blog.rubymentor.io/idiomatic-ruby-1/</loc>
+    <loc>http://localhost:1313/idiomatic-ruby-1/</loc>
     <lastmod>2013-11-23T00:00:00+00:00</lastmod>
   </url>
   

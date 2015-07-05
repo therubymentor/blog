@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</title>
-    <link>//blog.rubymentor.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Tue, 18 Nov 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//blog.rubymentor.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About</title>
-      <link>//blog.rubymentor.io/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Tue, 18 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>//blog.rubymentor.io/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>
 
 &lt;h1 id=&#34;about-me-and-the-company:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;About me and the company&lt;/h1&gt;
@@ -38,10 +38,10 @@
     
     <item>
       <title>Introduction to Idiomatic Ruby</title>
-      <link>//blog.rubymentor.io/idiomatic-ruby-1/</link>
+      <link>http://localhost:1313/idiomatic-ruby-1/</link>
       <pubDate>Sat, 23 Nov 2013 00:00:00 +0000</pubDate>
       
-      <guid>//blog.rubymentor.io/idiomatic-ruby-1/</guid>
+      <guid>http://localhost:1313/idiomatic-ruby-1/</guid>
       <description>
 
 &lt;h2 id=&#34;just-because-it-runs-as-ruby-doesn-t-mean-it-is-ruby:bdec7a466a0d14d4fc6efa2a9be8b5a4&#34;&gt;Just because it runs AS Ruby doesn&amp;rsquo;t mean it IS Ruby!&lt;/h2&gt;
