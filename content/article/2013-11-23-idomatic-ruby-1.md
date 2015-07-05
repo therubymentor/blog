@@ -36,18 +36,6 @@ end
 
 And then refactor it into this *idiomatic Ruby* we get much different looking code. Code that is clean and neat and terse. *Ruby code*!
 
-```Ruby
-def some_better_method(user, ids)
-  vals   = ids.map     {|id| user.to_h(id) }
-  method = if vals.any?
-    [:do_something_with_hashes, vals]
-  else
-    [:do_something_without]
-  end
-  send(*method)
-end
-```
-
 Let’s start with what I would consider the *first* violation of *idiomatic* Ruby, the use of a local variable to be looped over and appended to or replaced based on the outcome of the loop.
 
 ```Ruby
@@ -87,7 +75,7 @@ end
 
 But then we need to think about what we want this method to *return*. In this case it will be the return of one of the two methods in the conditional. Since this is *Ruby*, every method returns the last evaluation naturally, which is why a return statement at the end of a method in Ruby makes little sense.
 
-Well, if the last evaluation is returned and the last evaluation is the return of one of the two methods, we don't need tp store a retval variable at all!
+Well, if the last evaluation is returned and the last evaluation is the return of one of the two methods, we don't need to store a retval variable at all!
 
 ```Ruby
 if vals.any?

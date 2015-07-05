@@ -1,5 +1,5 @@
 languageCode: "en-us"
-canonifyurls: false
+canonifyurls: true
 
 title: "Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor"
 baseurl: "http://blog.rubymentor.io/"
