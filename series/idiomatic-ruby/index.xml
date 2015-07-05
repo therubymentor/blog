@@ -1,40 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</title>
-    <link>http://blog.rubymentor.io/</link>
-    <description>Recent content on Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</description>
+    <title>Idiomatic Ruby on Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</title>
+    <link>http://blog.rubymentor.io/series/idiomatic-ruby/</link>
+    <description>Recent content in Idiomatic Ruby on Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 18 Nov 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://blog.rubymentor.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>About</title>
-      <link>http://blog.rubymentor.io/about/</link>
-      <pubDate>Tue, 18 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.rubymentor.io/about/</guid>
-      <description>
-
-&lt;h1 id=&#34;about-me-and-the-company:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;About me and the company&lt;/h1&gt;
-
-&lt;h2 id=&#34;me:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Me&lt;/h2&gt;
-
-&lt;p&gt;I have used many different languages and technologies over the years as a web developer, but lately the &lt;a href=&#34;http://www.ruby-lang.org/en/&#34;&gt;Ruby&lt;/a&gt; programming language and a combination of &lt;a href=&#34;http://rack.github.io/&#34;&gt;Rack&lt;/a&gt;, &lt;a href=&#34;http://sinatrarb.com/&#34;&gt;Sinatra&lt;/a&gt;, and even &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; have been my tools of choice, usually combined with the awesome JavaScript library, &lt;a href=&#34;http://jquery.com/&#34;&gt;jQuery&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I live between San Diego and Puerto Vallarta depending on the weather and my mood. Sometimes I feel like a nut, sometimes I don&amp;rsquo;t.&lt;/p&gt;
-
-&lt;h2 id=&#34;technology-education:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Technology Education&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://rubymentor.io&#34;&gt;RubyMentor&lt;/a&gt; was founded in 2015 after spending 3 years rescuing Rails projects, and then another year helping developers figure out what ails them at &lt;a href=&#34;https://codementor.io&#34;&gt;CodeMentor&lt;/a&gt;, where I am the #1 Ruby Mentor.&lt;/p&gt;
-
-&lt;p&gt;So for 5 years I have been exposed to some of the ugliest code Ruby has ever known. I have refactored some scary shit. I have untangled the tangliest pasta code you can image, and I have decoupled code that was brittle and impossible to test. I tend to focus on Test Driven Development to tease out and test functionality in an isolation style.&lt;/p&gt;
-
-&lt;p&gt;I now mentor students daily using tools like &lt;a href=&#34;https://flowdock.com&#34;&gt;Flowdock&lt;/a&gt;, and Audio and Screen sharing using HTML5 and Javascript, and &lt;a href=&#34;https://tmate.io&#34;&gt;Tmate&lt;/a&gt; to share and pair and care. I teach everything from beginner functional and object oriented programming to hands on ruby on rails mentorship to javascript and jquery live instruction.&lt;/p&gt;
-</description>
-    </item>
+    <lastBuildDate>Sat, 23 Nov 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://blog.rubymentor.io/series/idiomatic-ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Introduction to Idiomatic Ruby</title>
