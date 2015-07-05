@@ -107,9 +107,8 @@ p code {
     }
   }
 
-  .series {
+  .series, .recommended {
     border-top: 1px solid #bbb;
-    border-bottom: 1px solid #bbb;
 
     ul {
       list-style-type: square;
@@ -117,7 +116,12 @@ p code {
 
       li {
         margin-left: 1.5em;
+
+        a {
+          font-size: 0.8em;
+        }
       }
+
     }
   }
 
