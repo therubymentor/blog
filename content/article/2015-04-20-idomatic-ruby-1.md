@@ -19,7 +19,7 @@ So what does this *idiomatic Ruby* I speak of look like?
 
 What better way to present my case then by starting with some *unidiomatic Ruby*?
 
-```Ruby
+```ruby
 def some_long_method_with_many_problems(user, ids)
   vals = []
   ids.each do |id|
@@ -39,7 +39,7 @@ And then refactor it into this *idiomatic Ruby* we get much different looking co
 
 Let’s start with what I would consider the *first* violation of *idiomatic* Ruby, the use of a local variable to be looped over and appended to or replaced based on the outcome of the loop.
 
-```Ruby
+```ruby
 vals = []
 ids.each do |id|
   vals << user.returns_a_hash(id)
@@ -50,13 +50,13 @@ What we really have here is a *enumeration*. We are going to iterate over severa
 
 So instead of looping, lets make it *idiomatic*.
 
-```Ruby
+```ruby
 vals = ids.map {|id| user.returns_a_hash(id) }
 ```
 
 The second violation to *idiomatic* Ruby is the ‘inner’ assignment inside the conditional:
 
-```Ruby
+```ruby
 if vals.any?
   retval = do_something_with_hashes(vals)
 else
@@ -66,7 +66,7 @@ end
 
 The fix is simple, remove the duplication of the retval assignment by moving the assignup up ahead of the if:
 
-```Ruby
+```ruby
 retval = if vals.any?
   do_something_with_hashes(vals)
 else
@@ -78,7 +78,7 @@ But then we need to think about what we want this method to *return*. In this ca
 
 Well, if the last evaluation is returned and the last evaluation is the return of one of the two methods, we don't need to store a retval variable at all!
 
-```Ruby
+```ruby
 if vals.any?
   do_something_with_hashes(vals)
 else
@@ -88,7 +88,7 @@ end
 
 All together now!
 
-```Ruby
+```ruby
 def a_better_method(user, ids)
   vals = ids.map {|id| user.returns_a_hash(id) }
   if vals.any?
