@@ -2,6 +2,7 @@
 type: article
 date: 2013-11-23
 url: /idiomatic-Ruby-1/
+series: ["Idiomatic Ruby"]
 read_in: 10 minutes
 author: Jim OKelly
 author_link: https://codementor.io/rubymentor

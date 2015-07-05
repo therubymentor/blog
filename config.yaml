@@ -4,6 +4,10 @@ canonifyurls: true
 title: "Funcitonal, Idiomatic Ruby Musings - Jim OKelly - RubyMentor"
 baseurl: "http://blog.rubymentor.io/"
 
+taxonomies:
+  tag: "tags"
+  series: "series"
+
 author:
   name: "Jim OKelly"
 

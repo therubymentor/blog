@@ -18,7 +18,7 @@
       <guid>http://blog.rubymentor.io/idiomatic-ruby-1/</guid>
       <description>
 
-&lt;h2 id=&#34;just-because-it-runs-as-ruby-doesn-t-mean-it-is-ruby:8028b3382a72f5385d77b21adb3bbab8&#34;&gt;Just because it runs AS Ruby doesn&amp;rsquo;t mean it IS Ruby!&lt;/h2&gt;
+&lt;h2 id=&#34;just-because-it-runs-as-ruby-doesn-t-mean-it-is-ruby:bdec7a466a0d14d4fc6efa2a9be8b5a4&#34;&gt;Just because it runs AS Ruby doesn&amp;rsquo;t mean it IS Ruby!&lt;/h2&gt;
 
 &lt;p&gt;OK, so you are writing IN Ruby, but you probably aren’t writing Ruby. You are writing c/basic in Rubyish syntax. This is bad. Slap your hand bad. Makes Matz cry bad. You should be writing in &lt;em&gt;idiomatic Ruby&lt;/em&gt;.&lt;/p&gt;
 

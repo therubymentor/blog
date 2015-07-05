@@ -1,0 +1,13 @@
+{{ if .Params.series }}
+<div class="series">
+  {{ $name := index .Params.series 0 }}
+  <h2>Posts in the <b>{{$name}}</b> series:</h2>
+  {{ $name := $name | urlize }}
+  {{ $series := index .Site.Taxonomies.series $name }}
+  <ul class="other-articles">
+    {{ range $series.Pages }}
+    <li><a href="{{.Permalink}}">{{.LinkTitle}}</a></li>
+    {{end}}
+  </ul>
+</div>
+{{end}} 

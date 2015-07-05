@@ -116,6 +116,40 @@ p code {
   margin: 0;
 }
 
+#article .series {
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+
+  ul {
+    list-style-type: square;
+    margin: 1em;
+
+    li {
+      margin-left: 1.5em;
+    }
+  }
+}
+
+#article hr {
+  margin: 1px;
+}
+
+#article ul.entry-meta {
+  list-style: none;
+  text-align: center;
+  padding: 0.6em 0;
+  margin: 0;
+  width: 100%;
+  background: #D1ECFC;
+
+  li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    margin-left: 1.5em;
+  }
+}
+
 /* #Media Queries
 ================================================== */
 
@@ -143,11 +177,11 @@ p code {
 
     article {
       margin-top: 20px;
-      margin-bottom: 80px;
+      margin-bottom: 2em;
     }
 
     .entry-summary {
-      margin-bottom: 1.6em;
+      margin-bottom: 1em;
     }
 
     .article-content {

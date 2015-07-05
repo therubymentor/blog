@@ -7,49 +7,22 @@
           <h1 class='entry-title'>{{.Title}}</h1>
           <h2><div class='entry-summary'>{{.Params.summary}}</div></h2>
           <hr>
-          <div class='entry-meta'>
-            <strong>Read Time:</strong> {{.Params.read_in}}<br>
-            <strong>Difficulty:</strong> {{.Params.difficulty}}
-            <hr>
-          </div>
+          <ul class="entry-meta">
+            <li><strong>Read Time:</strong> {{.Params.read_in}}</li>
+            <li><strong>Difficulty:</strong> {{.Params.difficulty}}</li>
+            {{ if .Params.series }}
+              {{ $series_name := index .Params.series 0 }}
+            <li><strong>Series:</strong> {{$series_name}}</li>
+            {{end}}
+          </ul>
+          <hr>
           <section class='article-content entry-content'>
             {{ .Content }}
           </section>
         </article>
 
-        <div id="hcard-Jim-OKelly" class="vcard byline row remove-bottom">
-          <div class="three columns alpha">
-            <div class="photo-container">
-              <a href="https://codementor.io/rubymentor"><img src="/images/jim_okelly.png" alt="Jim OKelly" class="photo" /></a>
-            </div>
-          </div>
-          <div class="ten columns omega">
-            <h2 class="main-title">
-              HI! My name is
-              <span class="fn n">
-                <span class="given-name">Jim</span>
-                <span class="family-name">OKelly</span></span>, and 
-                I’m a <span class="role">Rubyist and a Technology Educator</span>.
-              </span>
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="sixteen columns">
-          <aside class="recent-articles">
-            <h2>Articles</h2>
-            {{ $currentTitle := .Title }}
-            {{ range first 10 (where .Site.Pages "Type" "article") }}
-              {{ if ne $currentTitle .Title }}
-                <div class="article add-bottom">
-                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                  <section class="article-summary">{{ .Params.summary }}</section>
-                </div>
-              {{ end }}
-            {{ end }}
-          </aside>
-        </div>
+        {{ partial "related.html" . }}
+
       </div>
     </div>
   </div>
