@@ -52,7 +52,7 @@
 
 &lt;p&gt;What better way to present my case then by starting with some &lt;em&gt;unidiomatic Ruby&lt;/em&gt;?&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;def some_long_method_with_many_problems(user, ids)
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def some_long_method_with_many_problems(user, ids)
   vals = []
   ids.each do |id|
     vals &amp;lt;&amp;lt; user.returns_a_hash(id)
@@ -71,7 +71,7 @@ end
 
 &lt;p&gt;Let’s start with what I would consider the &lt;em&gt;first&lt;/em&gt; violation of &lt;em&gt;idiomatic&lt;/em&gt; Ruby, the use of a local variable to be looped over and appended to or replaced based on the outcome of the loop.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;vals = []
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;vals = []
 ids.each do |id|
   vals &amp;lt;&amp;lt; user.returns_a_hash(id)
 end
@@ -81,12 +81,12 @@ end
 
 &lt;p&gt;So instead of looping, lets make it &lt;em&gt;idiomatic&lt;/em&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;vals = ids.map {|id| user.returns_a_hash(id) }
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;vals = ids.map {|id| user.returns_a_hash(id) }
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The second violation to &lt;em&gt;idiomatic&lt;/em&gt; Ruby is the ‘inner’ assignment inside the conditional:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;if vals.any?
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;if vals.any?
   retval = do_something_with_hashes(vals)
 else
   retval = do_something_without
@@ -95,7 +95,7 @@ end
 
 &lt;p&gt;The fix is simple, remove the duplication of the retval assignment by moving the assignup up ahead of the if:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;retval = if vals.any?
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;retval = if vals.any?
   do_something_with_hashes(vals)
 else
   do_something_without
@@ -106,7 +106,7 @@ end
 
 &lt;p&gt;Well, if the last evaluation is returned and the last evaluation is the return of one of the two methods, we don&amp;rsquo;t need to store a retval variable at all!&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;if vals.any?
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;if vals.any?
   do_something_with_hashes(vals)
 else
   do_something_without
@@ -115,7 +115,7 @@ end
 
 &lt;p&gt;All together now!&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;def a_better_method(user, ids)
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def a_better_method(user, ids)
   vals = ids.map {|id| user.returns_a_hash(id) }
   if vals.any?
     do_something_with_hashes(vals)
