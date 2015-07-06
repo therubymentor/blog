@@ -1,11 +1,10 @@
 ---
 type: article
-date: 2013-11-23
+date: 2015-04-20
 url: /idiomatic-Ruby-1/
 series: ["Idiomatic Ruby"]
 read_in: 10 minutes
 author: Jim OKelly
-author_link: https://codementor.io/rubymentor
 difficulty: Beginner
 title: Introduction to Idiomatic Ruby
 summary: Writing beautiful Ruby code starts with being IDIOMATIC
