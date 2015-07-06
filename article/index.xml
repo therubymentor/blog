@@ -7,13 +7,173 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 23 Nov 2013 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="/article/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Arrays, Multiple Assiment, and Splatting</title>
+      <link>/idiomatic-ruby-2/</link>
+      <pubDate>Fri, 05 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/idiomatic-ruby-2/</guid>
+      <description>
+
+&lt;h2 id=&#34;in-ruby-the-array-is-king-thanks-matz:0e5e919d9272cede67549c6788ab2218&#34;&gt;In Ruby, the Array is King - Thanks Matz!&lt;/h2&gt;
+
+&lt;p&gt;I have dug into the C source code to look at how Array was implemented since
+early on I could tell that Ruby didn&amp;rsquo;t really allocate Arrays in the normal way,
+ie.. start with what you have, data size-wise, and then &lt;em&gt;grow&lt;/em&gt; the Array from
+there.&lt;/p&gt;
+
+&lt;p&gt;If it worked in the simplistic form I thought about back in 2009, it would be
+very, very inefficient, so I went digging. Here is what I found&amp;hellip; I give you
+the TLDR version of the internals of Array memory management in Ruby&amp;hellip;..&lt;/p&gt;
+
+&lt;p&gt;Matz and co have &lt;em&gt;highly optimized&lt;/em&gt; Arrays in Ruby so there is actually a lot
+of linked lists and pointer math going on under the hood so you do can work
+with Arrays at such a high level, with little care to how you do it. (for the
+most part)&lt;/p&gt;
+
+&lt;h2 id=&#34;use-the-array-luke-jedi-ruby-array-tricks:0e5e919d9272cede67549c6788ab2218&#34;&gt;Use the Array, Luke.. Jedi Ruby Array Tricks&lt;/h2&gt;
+
+&lt;p&gt;Since Matz and co have gone through such lengths to make Arrays optimal and as
+fast as something is going to be on a VM like MRI, I make liberal use of them
+in my programs. Due to this need, Ruby has a bunch of &amp;lsquo;shortcuts&amp;rsquo; to help us
+create and use Arrays.&lt;/p&gt;
+
+&lt;p&gt;Want to create an Array of Strings? Coooooooo man, we got that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;%w[John Susan Mary Black Red Heart Spade]
+=&amp;gt; [&amp;quot;John&amp;quot;, &amp;quot;Susan&amp;quot;, &amp;quot;Mary&amp;quot;, &amp;quot;Black&amp;quot;, &amp;quot;Red&amp;quot;, &amp;quot;Heart&amp;quot;, &amp;quot;Spade&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What if you need spaces in those strings? Well, then you could do this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;%w[John Susan Mary Black Red Heart Spade 8\ of\ spades]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This works because &lt;code&gt;\&lt;/code&gt; is an &lt;em&gt;escape&lt;/em&gt; character. In this case it &lt;em&gt;escapes&lt;/em&gt;
+the &amp;lsquo;specialness&amp;rsquo; of the space character in the context of &lt;code&gt;%w&lt;/code&gt; which, if
+you remember, uses spaces as an Array delimeter, saving us the &amp;lsquo;effort&amp;rsquo; of
+using commas and quotes.&lt;/p&gt;
+
+&lt;p&gt;Another common need in Ruby is to create an Array of &lt;code&gt;Symbols&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;%i[hearts spades diamonds clubs]
+=&amp;gt; [:hearts, :spades, :diamonds, :clubs]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, that works just like &lt;code&gt;%w&lt;/code&gt; except we get a &lt;code&gt;Symbol&lt;/code&gt; instead
+of a &lt;code&gt;String&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here are a couple more:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;%r{ ^http://regex\. }
+%{ String can have &#39;single&#39; or &amp;quot;double&amp;quot; quotes }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;array-maths-if-you-have-3-oranges-and-i-give-you-1-of-mine:0e5e919d9272cede67549c6788ab2218&#34;&gt;Array Maths - If you have 3 oranges and I give you 1 of mine&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s tell this story using code since this &lt;em&gt;is&lt;/em&gt; Ruby:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;mine  = 5.times.map { :orange }
+=&amp;gt; [:orange, :orange, :orange, :orange, :orange]
+
+yours = 3.times.map { :orange }
+=&amp;gt; [:orange, :orange, :orange]
+
+given = [:orange]
+=&amp;gt; [:orange]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It&amp;rsquo;s dangerous to go alone! Take this 🍊&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;yours = yours + mine.pop # .pop, pops one off _mine_
+=&amp;gt; [:orange, :orange, :orange, :orange]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Still following? I just gave you an orange bro (or broette)! What about my oranges now?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;mine
+=&amp;gt; [:orange, :orange, :orange, :orange]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Normally I prefer to &lt;em&gt;not mutate&lt;/em&gt; stuff willie-nillie, but since these are 🍊 s and not
+numbers like 1 2 3 4, we can&amp;rsquo;t just do &lt;code&gt;mine - [:orange]&lt;/code&gt; (you can try it) because it
+will take ALL the 🍊 s out of my bag.&lt;/p&gt;
+
+&lt;h2 id=&#34;multiple-assignment-and-splatting:0e5e919d9272cede67549c6788ab2218&#34;&gt;Multiple assignment and splatting&lt;/h2&gt;
+
+&lt;p&gt;The last two Array tricks I will show you are multiple assignment and the splat, or
+deconstructive operator.&lt;/p&gt;
+
+&lt;p&gt;Multiple assignment is useful in a number of ways, and rather than give another long
+winded expaination of it, let&amp;rsquo;s look at some code!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def initialize(val1, val2, val3)
+  @val1, @val2, @val3 = val1, val2, val3
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I have seen this in a lot of Ruby code and I will call it shit, at least in this form. As
+soon as someone needs to add another value to change the order, things get ugly pretty
+fast. Let&amp;rsquo;s change the arguments to x, y, and z:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def initialize(x, y, z)
+  @x, @y, @z = x, y, z
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case it isn&amp;rsquo;t extremely terrible from where I sit. As these are now 3d coordinates
+their order and grouping makes a lot more sense. So in short, use multiple assignment like
+this when the variables are closely related, but a better idea would be to make an object
+to &amp;lsquo;contain&amp;rsquo; them and just pass that into this method. Then we don&amp;rsquo;t have the issues of
+three params being passed in or what order they need to be in.&lt;/p&gt;
+
+&lt;p&gt;But there is another form of multiple assignment:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# swap around values
+x, y = y, x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I like this swapping idiom very much when it is useful to the problem I am solving. Another
+one would be decontructing multiple return values:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def some_method
+  [x, y, z]
+end
+
+x, y, z = some_method
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since this method returns an Array, we can &amp;lsquo;deconstruct&amp;rsquo; that array into the three values
+Here is another example.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;head, *tail = %w[fred susan bobby]
+head
+=&amp;gt; &amp;quot;fred&amp;quot;
+
+tail
+=&amp;gt; [&amp;quot;susan&amp;quot;, &amp;quot;bobbby&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Whoa!!! Pointer magic in Ruby?&lt;/p&gt;
+
+&lt;p&gt;Well, no. That is the Splat, or deconstructor operator I elluded to before. Do you see how it
+works? &lt;code&gt;head&lt;/code&gt; gets the first value of the Array, while &lt;code&gt;tail&lt;/code&gt; gets the rest of the elements,
+so we end up with a head with 1 element, and a tail with the rest.&lt;/p&gt;
+
+&lt;p&gt;That is all I have for you today. Soon I will start showing off some functional principles
+that will make use of what you learned in the first 2 of this series, &amp;ldquo;Idiomatic Ruby&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;See you soon!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Introduction to Idiomatic Ruby</title>
       <link>/idiomatic-ruby-1/</link>
-      <pubDate>Sat, 23 Nov 2013 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 Apr 2015 00:00:00 +0000</pubDate>
       
       <guid>/idiomatic-ruby-1/</guid>
       <description>

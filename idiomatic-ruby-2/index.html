@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Arrays, Multiple Assiment, and Splatting - Functional, Idiomatic Ruby Musings - Jim OKelly - Professional Ruby Mentor</title>
+    
+    <meta name="description" content="A basic look into Idiomatic Ruby Arrays">
+    <meta name="author" content="Jim OKelly">
+    <meta name="keywords" content="">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Arrays, Multiple Assiment, and Splatting" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Functional, Idiomatic Ruby Musings - Jim OKelly - Professional Ruby Mentor" />
+    <meta property="og:url" content="/idiomatic-ruby-2/" />
+    <meta property="og:image" content="//blog.rubymentor.io/images/logo_square.png" />
+    <meta property="og:description" content="A basic look into Idiomatic Ruby Arrays" />
+    <meta property="article:published_time" content="2015-06-05 00:00:00 &#43;0000 UTC" />
+    <link rel="author" type="text/plain" href="//blog.rubymentor.io/humans.txt" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+    <link rel="canonical" href="/idiomatic-ruby-2/">
+    <link rel="alternate" type="application/rss+xml"  href="//blog.rubymentor.io/article/index.xml" title="RSS Feed">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/tomorrow-night-bright.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+<body lang="en">
+
+  
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WDXZP7"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WDXZP7');</script>
+  
+
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">More from <a href="//rubymentor.io?utm_campaign=empire&utm_medium=referral&utm_source=blog">RubyMentor</a>:</strong>
+      <ul class="more-info-links xs-hidden">
+        <li class="more-info"><a href="//codementor.io/rubymentor?utm_campaign=empire&utm_medium=referral&utm_source=blog" alt="Hourly Expert Ruby Mentorship">
+            Get Expert Help NOW</a></li>
+        <li class="more-info"><a href="//rubymentor.io/plans?utm_campaign=empire&utm_medium=referral&utm_source=blog" alt="Want a more personal and direct technology education?">
+            Monthly Mentorship Plans</a></li>
+        <li class="more-info"><a href="//rubylive.tv?utm_campaign=empire&utm_medium=referral&utm_source=blog" alt="Watch REAL Ruby get coded before your eyes!">
+            Watch Ruby coded LIVE!</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+          <div class="row">
+        <header class="sixteen columns" id="main_header">
+          <a class="logo_link" href="/"><h1 id="logo">RubyMentor - Learn Ruby, Learn Rails, Ruby on Rails Mentorships</h1></a>
+        </header>
+      </div>
+
+    <div class="row">
+      <div class="sixteen columns hentry" id="article">
+        <article>
+          <h1 class='entry-title'>Arrays, Multiple Assiment, and Splatting</h1>
+          <h2><div class='entry-summary'>A basic look into Idiomatic Ruby Arrays</div></h2>
+          <hr>
+          <ul class="entry-meta">
+            <li><strong>Read Time:</strong> 10 minutes</li>
+            <li><strong>Difficulty:</strong> Beginner</li>
+            
+              
+            <li><strong>Series:</strong> Idiomatic Ruby</li>
+            
+          </ul>
+          <hr>
+          <section class='article-content entry-content'>
+            
+
+<h2 id="in-ruby-the-array-is-king-thanks-matz:0e5e919d9272cede67549c6788ab2218">In Ruby, the Array is King - Thanks Matz!</h2>
+
+<p>I have dug into the C source code to look at how Array was implemented since
+early on I could tell that Ruby didn&rsquo;t really allocate Arrays in the normal way,
+ie.. start with what you have, data size-wise, and then <em>grow</em> the Array from
+there.</p>
+
+<p>If it worked in the simplistic form I thought about back in 2009, it would be
+very, very inefficient, so I went digging. Here is what I found&hellip; I give you
+the TLDR version of the internals of Array memory management in Ruby&hellip;..</p>
+
+<p>Matz and co have <em>highly optimized</em> Arrays in Ruby so there is actually a lot
+of linked lists and pointer math going on under the hood so you do can work
+with Arrays at such a high level, with little care to how you do it. (for the
+most part)</p>
+
+<h2 id="use-the-array-luke-jedi-ruby-array-tricks:0e5e919d9272cede67549c6788ab2218">Use the Array, Luke.. Jedi Ruby Array Tricks</h2>
+
+<p>Since Matz and co have gone through such lengths to make Arrays optimal and as
+fast as something is going to be on a VM like MRI, I make liberal use of them
+in my programs. Due to this need, Ruby has a bunch of &lsquo;shortcuts&rsquo; to help us
+create and use Arrays.</p>
+
+<p>Want to create an Array of Strings? Coooooooo man, we got that:</p>
+
+<pre><code class="language-ruby">%w[John Susan Mary Black Red Heart Spade]
+=&gt; [&quot;John&quot;, &quot;Susan&quot;, &quot;Mary&quot;, &quot;Black&quot;, &quot;Red&quot;, &quot;Heart&quot;, &quot;Spade&quot;]
+</code></pre>
+
+<p>What if you need spaces in those strings? Well, then you could do this:</p>
+
+<pre><code class="language-ruby">%w[John Susan Mary Black Red Heart Spade 8\ of\ spades]
+</code></pre>
+
+<p>This works because <code>\</code> is an <em>escape</em> character. In this case it <em>escapes</em>
+the &lsquo;specialness&rsquo; of the space character in the context of <code>%w</code> which, if
+you remember, uses spaces as an Array delimeter, saving us the &lsquo;effort&rsquo; of
+using commas and quotes.</p>
+
+<p>Another common need in Ruby is to create an Array of <code>Symbols</code>:</p>
+
+<pre><code class="language-ruby">%i[hearts spades diamonds clubs]
+=&gt; [:hearts, :spades, :diamonds, :clubs]
+</code></pre>
+
+<p>As you can see, that works just like <code>%w</code> except we get a <code>Symbol</code> instead
+of a <code>String</code>.</p>
+
+<p>Here are a couple more:</p>
+
+<pre><code class="language-ruby">%r{ ^http://regex\. }
+%{ String can have 'single' or &quot;double&quot; quotes }
+</code></pre>
+
+<h2 id="array-maths-if-you-have-3-oranges-and-i-give-you-1-of-mine:0e5e919d9272cede67549c6788ab2218">Array Maths - If you have 3 oranges and I give you 1 of mine</h2>
+
+<p>Let&rsquo;s tell this story using code since this <em>is</em> Ruby:</p>
+
+<pre><code class="language-ruby">mine  = 5.times.map { :orange }
+=&gt; [:orange, :orange, :orange, :orange, :orange]
+
+yours = 3.times.map { :orange }
+=&gt; [:orange, :orange, :orange]
+
+given = [:orange]
+=&gt; [:orange]
+</code></pre>
+
+<p>It&rsquo;s dangerous to go alone! Take this 🍊</p>
+
+<pre><code class="language-ruby">yours = yours + mine.pop # .pop, pops one off _mine_
+=&gt; [:orange, :orange, :orange, :orange]
+</code></pre>
+
+<p>Still following? I just gave you an orange bro (or broette)! What about my oranges now?</p>
+
+<pre><code class="language-ruby">mine
+=&gt; [:orange, :orange, :orange, :orange]
+</code></pre>
+
+<p>Normally I prefer to <em>not mutate</em> stuff willie-nillie, but since these are 🍊 s and not
+numbers like 1 2 3 4, we can&rsquo;t just do <code>mine - [:orange]</code> (you can try it) because it
+will take ALL the 🍊 s out of my bag.</p>
+
+<h2 id="multiple-assignment-and-splatting:0e5e919d9272cede67549c6788ab2218">Multiple assignment and splatting</h2>
+
+<p>The last two Array tricks I will show you are multiple assignment and the splat, or
+deconstructive operator.</p>
+
+<p>Multiple assignment is useful in a number of ways, and rather than give another long
+winded expaination of it, let&rsquo;s look at some code!</p>
+
+<pre><code class="language-ruby">def initialize(val1, val2, val3)
+  @val1, @val2, @val3 = val1, val2, val3
+end
+</code></pre>
+
+<p>I have seen this in a lot of Ruby code and I will call it shit, at least in this form. As
+soon as someone needs to add another value to change the order, things get ugly pretty
+fast. Let&rsquo;s change the arguments to x, y, and z:</p>
+
+<pre><code class="language-ruby">def initialize(x, y, z)
+  @x, @y, @z = x, y, z
+end
+</code></pre>
+
+<p>In this case it isn&rsquo;t extremely terrible from where I sit. As these are now 3d coordinates
+their order and grouping makes a lot more sense. So in short, use multiple assignment like
+this when the variables are closely related, but a better idea would be to make an object
+to &lsquo;contain&rsquo; them and just pass that into this method. Then we don&rsquo;t have the issues of
+three params being passed in or what order they need to be in.</p>
+
+<p>But there is another form of multiple assignment:</p>
+
+<pre><code class="language-ruby"># swap around values
+x, y = y, x
+</code></pre>
+
+<p>I like this swapping idiom very much when it is useful to the problem I am solving. Another
+one would be decontructing multiple return values:</p>
+
+<pre><code class="language-ruby">def some_method
+  [x, y, z]
+end
+
+x, y, z = some_method
+</code></pre>
+
+<p>Since this method returns an Array, we can &lsquo;deconstruct&rsquo; that array into the three values
+Here is another example.</p>
+
+<pre><code class="language-ruby">head, *tail = %w[fred susan bobby]
+head
+=&gt; &quot;fred&quot;
+
+tail
+=&gt; [&quot;susan&quot;, &quot;bobbby&quot;]
+</code></pre>
+
+<p>Whoa!!! Pointer magic in Ruby?</p>
+
+<p>Well, no. That is the Splat, or deconstructor operator I elluded to before. Do you see how it
+works? <code>head</code> gets the first value of the Array, while <code>tail</code> gets the rest of the elements,
+so we end up with a head with 1 element, and a tail with the rest.</p>
+
+<p>That is all I have for you today. Soon I will start showing off some functional principles
+that will make use of what you learned in the first 2 of this series, &ldquo;Idiomatic Ruby&rdquo;.</p>
+
+<p>See you soon!</p>
+
+          </section>
+        </article>
+
+        
+<div class="series">
+  
+  <h4>Posts in the <b>Idiomatic Ruby</b> series:</h4>
+  
+  
+  <ul class="other-articles">
+    
+    <li><a href="/idiomatic-ruby-2/">Arrays, Multiple Assiment, and Splatting</a></li>
+    
+    <li><a href="/idiomatic-ruby-1/">Introduction to Idiomatic Ruby</a></li>
+    
+  </ul>
+</div>
+ 
+
+
+        <div class="recommended">
+<h4>More from the <a href="https://blog.rubymentorio">RubyMentor Guides</a>:</h4>
+<ul class="other-articles">
+  <li>
+    <a href="https://guides.rubymentor.io/build-a-deck-of-cards-using-irb.html">
+      Build a Deck of Cards using IRB (and Functional Ruby!)</a>
+  </li>
+</ul>
+</div>
+
+      </div>
+    </div>
+  </div>
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
