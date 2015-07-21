@@ -7,8 +7,253 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 05 Jun 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="/article/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Analyzing Shakespeare using Functional Ruby</title>
+      <link>/analyzing-shakespeare-functional-ruby/</link>
+      <pubDate>Fri, 17 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/analyzing-shakespeare-functional-ruby/</guid>
+      <description>
+
+&lt;h2 id=&#34;a-code-kata-from-some-kool-people:3c371311742d4197b845c3473589c736&#34;&gt;A code kata from some kool people&lt;/h2&gt;
+
+&lt;p&gt;This kata comes from Thoutbot&amp;rsquo;s Upcase program. A student of mine sent it in to me a year ago and I have used it since as a teaching tool to introduce strictly Object Orientated Programmers to face the strange&amp;hellip; Chachachachanges&amp;hellip;..&lt;/p&gt;
+
+&lt;h2 id=&#34;but-first-some-tenderlove-parsing:3c371311742d4197b845c3473589c736&#34;&gt;But first, some Tenderlove parsing!&lt;/h2&gt;
+
+&lt;p&gt;Nokogiri is the long pause in your &lt;code&gt;gem install&lt;/code&gt; regimen. That pause is some c extentions being built which are needed to make it the speedy and useful tool it is.&lt;/p&gt;
+
+&lt;p&gt;The excersize at hand is to take some XML from this &lt;a href=&#34;file&#34;&gt;www.ibiblio.org/xml/examples/shakespeare/macbeth.xml&lt;/a&gt; and count out the spoken lines for each character appearing.&lt;/p&gt;
+
+&lt;h2 id=&#34;counting-in-the-counting-house-counting-out:3c371311742d4197b845c3473589c736&#34;&gt;Counting in the counting house&amp;hellip; counting out&amp;hellip;&lt;/h2&gt;
+
+&lt;p&gt;To get that count we will be writing a Unix program, meaning a script that is executable, takes input, returns output. We do it with Ruby and a shebang.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;#!/usr/bin/env ruby
+# cat macbeth.xml | xargs -0 ./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The second line there is really just a comment on how to use the program, but the first line tells the managing process which interpreter to use. This is done because the name of the utility &lt;code&gt;lc&lt;/code&gt; does not have an &lt;em&gt;rb&lt;/em&gt; extension.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-the-xml-in-question:3c371311742d4197b845c3473589c736&#34;&gt;Getting the XML in question&lt;/h2&gt;
+
+&lt;p&gt;We can either get the xml &lt;em&gt;realtime&lt;/em&gt; and &lt;em&gt;pipe&lt;/em&gt; it into our utility, or download the xml and then use &lt;code&gt;cat&lt;/code&gt; to send it into our pipe.&lt;/p&gt;
+
+&lt;p&gt;The first option looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml | xargs -c ./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The second:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml &amp;gt; macbeth.xml
+cat macbeth.xml | xargs -c ./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice the common demominator here is the &lt;em&gt;./lc&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;creating-a-unix-utility-commmand:3c371311742d4197b845c3473589c736&#34;&gt;Creating a UNIX utility commmand&lt;/h2&gt;
+
+&lt;p&gt;The &lt;em&gt;./&lt;/em&gt; in &lt;em&gt;./lc&lt;/em&gt; means the current working directory, ie, the one you &lt;code&gt;cd&lt;/code&gt; into. The filename of the command we are going to write is &lt;code&gt;lc&lt;/code&gt;. Let&amp;rsquo;s make that shit now.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or, create a file called &lt;code&gt;lc&lt;/code&gt; in the directory you have open in the terminal. In it put:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/usr/bin/env ruby
+# cat macbeth.xml | xargs -0 ./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;making-that-shit-executable:3c371311742d4197b845c3473589c736&#34;&gt;Making that shit executable&lt;/h2&gt;
+
+&lt;p&gt;If you try to run it now:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will get a permission error, that is because this file does not have permission to execute as per your login. To &lt;em&gt;set the executable flag&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod a+x ./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which means in &lt;em&gt;neckbeard&lt;/em&gt;, make this file executable for &lt;em&gt;all&lt;/em&gt; groups foo! Now run it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nada! But that is what we want. Next add this line to the end of that &lt;code&gt;lc&lt;/code&gt; file like so:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &amp;quot;puts &#39;Hello from UNIX bitches!&#39;&amp;quot; &amp;gt;&amp;gt; ./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You are piping shit all over, welcome to the world of the programmer. /troll&lt;/p&gt;
+
+&lt;p&gt;Next time you run it, it will print out that statement, using the Ruby &lt;code&gt;puts&lt;/code&gt; method, therefore it &amp;lsquo;works&amp;rsquo;. Now let&amp;rsquo;s start making it &lt;em&gt;useful&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;nokogiri-search-and-ruby-map:3c371311742d4197b845c3473589c736&#34;&gt;Nokogiri search and Ruby map&lt;/h2&gt;
+
+&lt;p&gt;Time to add some more code. Delete that last puts and make your &lt;code&gt;lc&lt;/code&gt; file look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;#!/usr/bin/env ruby
+# cat macbeth.xml | xargs -0 ./lc
+
+require &#39;nokogiri&#39;
+
+doc      = Nokogiri::XML(ARGV[0])
+speeches = doc.search(&#39;SPEECH&#39;)
+speakers = doc.search(&#39;SPEAKER&#39;).map(&amp;amp;:text).uniq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We &lt;code&gt;require&lt;/code&gt;d nokogiri so we could reference it. Then we use nokogiri to parse the xml sent in as &lt;code&gt;ARGV[0]&lt;/code&gt; into an tree based object model in order to easier extract the stuff we actually want from that giant xml file.&lt;/p&gt;
+
+&lt;p&gt;The next line get all the blocks of &lt;SPEECH&gt;, which we need:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;SPEECH&amp;gt;
+  &amp;lt;SPEAKER&amp;gt;First Witch&amp;lt;/SPEAKER&amp;gt;
+  &amp;lt;LINE&amp;gt;When shall we three meet again&amp;lt;/LINE&amp;gt;
+  &amp;lt;LINE&amp;gt;In thunder, lightning, or in rain?&amp;lt;/LINE&amp;gt;
+&amp;lt;/SPEECH&amp;gt;
+&amp;lt;SPEECH&amp;gt;
+  &amp;lt;SPEAKER&amp;gt;Second Witch&amp;lt;/SPEAKER&amp;gt;
+  &amp;lt;LINE&amp;gt;When the hurlyburly&#39;s done,&amp;lt;/LINE&amp;gt;
+  &amp;lt;LINE&amp;gt;When the battle&#39;s lost and won.&amp;lt;/LINE&amp;gt;
+&amp;lt;/SPEECH&amp;gt;
+&amp;lt;SPEECH&amp;gt;
+  &amp;lt;SPEAKER&amp;gt;Third Witch&amp;lt;/SPEAKER&amp;gt;
+  &amp;lt;LINE&amp;gt;That will be ere the set of sun.&amp;lt;/LINE&amp;gt;
+&amp;lt;/SPEECH&amp;gt;
+&amp;lt;SPEECH&amp;gt;
+  &amp;lt;SPEAKER&amp;gt;First Witch&amp;lt;/SPEAKER&amp;gt;
+  &amp;lt;LINE&amp;gt;Where the place?&amp;lt;/LINE&amp;gt;
+&amp;lt;/SPEECH&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, we get a unique list of all the speakers, because we will need it later to &lt;em&gt;aggregate&lt;/em&gt; the speaker lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;...
+speeches = doc.search(&#39;SPEECH&#39;)
+speakers = doc.search(&#39;SPEAKER&#39;).map(&amp;amp;:text).uniq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;using-rubys-map-function:3c371311742d4197b845c3473589c736&#34;&gt;Using Rubys #map function&lt;/h2&gt;
+
+&lt;p&gt;I love &lt;code&gt;#map&lt;/code&gt; and it&amp;rsquo;s whole family of &lt;em&gt;higher order functions&lt;/em&gt; like &lt;code&gt;reduce&lt;/code&gt;, and &lt;code&gt;select&lt;/code&gt; and every Highschooler&amp;rsquo;s favorite, &lt;code&gt;reject&lt;/code&gt;. This represent the best part of Ruby in my opinion.&lt;/p&gt;
+
+&lt;p&gt;We need to &lt;em&gt;transform&lt;/em&gt; that &lt;code&gt;Array&lt;/code&gt; of nokogiri xml to be in a format for friendly for our purposes, and I have decided that the &lt;code&gt;Hash&lt;/code&gt; is the perfect data structure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;{ name: &amp;quot;Bruce Lee&amp;quot;, lines: [
+  &amp;quot;Hey Chuck....&amp;quot;,
+  &amp;quot;Who&#39;s yo daddy?&amp;quot;,
+  &amp;quot;Come on Chucky... Say it&amp;quot;
+] }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To do the transform we will use &lt;code&gt;map&lt;/code&gt;, which starts with an enumerable collection, an &lt;code&gt;Array&lt;/code&gt; here, and for every item in the source &lt;code&gt;Array&lt;/code&gt;, a new item will be inserted into a &lt;em&gt;new&lt;/em&gt; &lt;code&gt;Array&lt;/code&gt;, and that new &lt;code&gt;Array&lt;/code&gt; will be returned.&lt;/p&gt;
+
+&lt;p&gt;That is what a &lt;code&gt;map&lt;/code&gt; means in programming. Here is the code that will map that ugly xml to something more friendly:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;spoken_lines = speeches.map {|s| { name:  s.at(&#39;SPEAKER&#39;).text, 
+                                   lines: s.search(&#39;LINE&#39;).map(&amp;amp;:text) } }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is how we build the &lt;code&gt;Array&lt;/code&gt; of &lt;code&gt;Hash&lt;/code&gt;s, one has per &lt;em&gt;row&lt;/em&gt; essentially, and the hash defines the &lt;em&gt;columns&lt;/em&gt;, much like a database in memory.&lt;/p&gt;
+
+&lt;p&gt;Now instead of a lot of data we don&amp;rsquo;t want, in a format we don&amp;rsquo;t like, we have a nice, homogonized block of data to play with.&lt;/p&gt;
+
+&lt;h2 id=&#34;i-m-getting-aggregated-here:3c371311742d4197b845c3473589c736&#34;&gt;I&amp;rsquo;m getting Aggregated here!&lt;/h2&gt;
+
+&lt;p&gt;What the hell is an &amp;ldquo;aggregation&amp;rdquo;? Well I learned the term doing SQL queries, which, by the way is a great, declarative, almost functional language. It might be easier to &lt;em&gt;show it&lt;/em&gt;, than to &lt;em&gt;describe it&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;[
+  { name: &amp;quot;Bruce Lee&amp;quot;, lines: [&amp;quot;Knock knock&amp;quot;] },
+  { name: &amp;quot;Chuck Norris&amp;quot;, lines: [&amp;quot;Who&#39;s there?&amp;quot;] },
+  { name: &amp;quot;Bruce Lee&amp;quot;, lines: [&amp;quot;Yo daaaadddddyyyyyy!&amp;quot;] }
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This data can be aggregated to remove the &lt;em&gt;duplicate&lt;/em&gt; information, which will make it a hell of a lot easier to get the count of any one speakers lines. But to do so we need to actually make a couple swipes at the problem to take it down.&lt;/p&gt;
+
+&lt;p&gt;We will be &lt;em&gt;iterating&lt;/em&gt; over that list of speakers we got from &lt;em&gt;line 8&lt;/em&gt;, and &lt;code&gt;select&lt;/code&gt; the lines that belong to each speaker.&lt;/p&gt;
+
+&lt;p&gt;Imagine we are on the first &lt;em&gt;iteration&lt;/em&gt;, the &lt;code&gt;name&lt;/code&gt; variable would be &amp;ldquo;Bruce Lee&amp;rdquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;aggregated = speakers.map do |name|
+  {
+    name: name,
+    line_count: spoken_lines.select {|l| l[:name] == name }.
+                            reduce([]) {|acc, l| acc &amp;lt;&amp;lt; l[:lines] }.
+                            flatten.count
+  }
+end
+=&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;hello-reduce-hope-you-guessed-my-name:3c371311742d4197b845c3473589c736&#34;&gt;Hello Reduce, hope you guessed my name&lt;/h2&gt;
+
+&lt;p&gt;This will require a bit-o-splain&amp;rsquo;. The &lt;code&gt;map&lt;/code&gt; is just a map, and on each iteration we will be returning a single &lt;code&gt;hash&lt;/code&gt; with the stuff inside we be a wantin, namely the name, and a line count.&lt;/p&gt;
+
+&lt;p&gt;The line count part gets a bit trickeh. Reduce is like a map, except that instead of building up a collection, it &lt;em&gt;reduces&lt;/em&gt; down to a single value, even if that single value is an Array of things :)&lt;/p&gt;
+
+&lt;p&gt;We will be reducing the lines that are spead around in multiple key values, into a single key-value. Ie, line_count: 42. &lt;code&gt;reduce&lt;/code&gt; takes a block and it has 2 &lt;em&gt;block variables&lt;/em&gt;, the &lt;em&gt;accumulator&lt;/em&gt; and the &lt;em&gt;iterator&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;accumulator&lt;/em&gt; is the value that&amp;hellip; yep, accumulates over the iterations. Think of it as a variable whos scope extends the lifetime of the whole iteration. Every time the iteration returns a value, that value can be &amp;lsquo;mathed&amp;rsquo; against the accumulator and that result will continue to the next iteration as the accumulator. Easy, right?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;%i[bob sue jim harry].reduce(&amp;quot;&amp;quot;) {|acc, name| acc = name }
+=&amp;gt; :harry
+
+%i[bob sue jim harry].reduce(&amp;quot;&amp;quot;) {|acc, name| name }
+=&amp;gt; &amp;quot;&amp;quot;
+
+%w[bob sue jim harry].reduce(0) {|acc, name| acc + name.chars.count }
+=&amp;gt; 14
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The easiest way to splain this shit is to just walk through it. So here we go:&lt;/p&gt;
+
+&lt;p&gt;(iteration 1)
+acc is 0, name is bob = 0 + bob.chars.count (3) = 3&lt;/p&gt;
+
+&lt;p&gt;(iteration 2)
+acc is 3, name is sue = 3 + sue.chars.count (3) = 6&lt;/p&gt;
+
+&lt;p&gt;(iteration 3)
+acc is 6, name is jim = 6 + jim.chars.count (3) = 9&lt;/p&gt;
+
+&lt;p&gt;(iteration 4)
+acc is 9, name is harry = 9 + harry.chars.count (5) = 14&lt;/p&gt;
+
+&lt;h2 id=&#34;formatting-and-printing:3c371311742d4197b845c3473589c736&#34;&gt;Formatting and printing&lt;/h2&gt;
+
+&lt;p&gt;Now that we have our values let&amp;rsquo;s sort, format and print. We start with the sorting, which goes a little something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;sorted = aggregated.sort {|a,b| b[:count] &amp;lt;=&amp;gt; a[:count] }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we format it for printing by returning the line count, followed by a tab character, followed by their name:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;formatted = sorted.map{|s| [s[:count], &amp;quot;\t&amp;quot;, s[:name]].join }.
+                   join(&amp;quot;\n&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Printing is stupid simple at this point, and since we have run long I will just spit it out:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;puts formatted
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;back-to-the-pipeline:3c371311742d4197b845c3473589c736&#34;&gt;Back to the pipeline&lt;/h2&gt;
+
+&lt;p&gt;Now, when we run our unix command pipeline:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml | xargs -c ./lc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we get the list of names and line counts. Isn&amp;rsquo;t functional programming in Ruby awesome?&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Arrays, Multiple Assiment, and Splatting</title>

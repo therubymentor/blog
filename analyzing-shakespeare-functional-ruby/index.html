@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Analyzing Shakespeare using Functional Ruby - Functional, Idiomatic Ruby Musings - Jim OKelly - Professional Ruby Mentor</title>
+    
+    <meta name="description" content="Seriously, Enumerable is the shit!">
+    <meta name="author" content="Jim OKelly">
+    <meta name="keywords" content="">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Analyzing Shakespeare using Functional Ruby" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Functional, Idiomatic Ruby Musings - Jim OKelly - Professional Ruby Mentor" />
+    <meta property="og:url" content="/analyzing-shakespeare-functional-ruby/" />
+    <meta property="og:image" content="//blog.rubymentor.io/images/logo_square.png" />
+    <meta property="og:description" content="Seriously, Enumerable is the shit!" />
+    <meta property="article:published_time" content="2015-07-17 00:00:00 &#43;0000 UTC" />
+    <link rel="author" type="text/plain" href="//blog.rubymentor.io/humans.txt" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+    <link rel="canonical" href="/analyzing-shakespeare-functional-ruby/">
+    <link rel="alternate" type="application/rss+xml"  href="//blog.rubymentor.io/article/index.xml" title="RSS Feed">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/tomorrow-night-bright.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+<body lang="en">
+
+  
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WDXZP7"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WDXZP7');</script>
+  
+
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">More from <a href="//rubymentor.io?utm_campaign=empire&utm_medium=referral&utm_source=blog">RubyMentor</a>:</strong>
+      <ul class="more-info-links xs-hidden">
+        <li class="more-info"><a href="//codementor.io/rubymentor?utm_campaign=empire&utm_medium=referral&utm_source=blog" alt="Hourly Expert Ruby Mentorship">
+            Get Expert Help NOW</a></li>
+        <li class="more-info"><a href="//rubymentor.io/plans?utm_campaign=empire&utm_medium=referral&utm_source=blog" alt="Want a more personal and direct technology education?">
+            Monthly Mentorship Plans</a></li>
+        <li class="more-info"><a href="//rubylive.tv?utm_campaign=empire&utm_medium=referral&utm_source=blog" alt="Watch REAL Ruby get coded before your eyes!">
+            Watch Ruby coded LIVE!</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+          <div class="row">
+        <header class="sixteen columns" id="main_header">
+          <a class="logo_link" href="/"><h1 id="logo">RubyMentor - Learn Ruby, Learn Rails, Ruby on Rails Mentorships</h1></a>
+        </header>
+      </div>
+
+    <div class="row">
+      <div class="sixteen columns hentry" id="article">
+        <article>
+          <h1 class='entry-title'>Analyzing Shakespeare using Functional Ruby</h1>
+          <h2><div class='entry-summary'>Seriously, Enumerable is the shit!</div></h2>
+          <hr>
+          <ul class="entry-meta">
+            <li><strong>Read Time:</strong> 15 minutes</li>
+            
+              
+            <li><strong>Series:</strong> Exploring Functional Ruby</li>
+            
+          </ul>
+          <hr>
+          <section class='article-content entry-content'>
+            
+
+<h2 id="a-code-kata-from-some-kool-people:3c371311742d4197b845c3473589c736">A code kata from some kool people</h2>
+
+<p>This kata comes from Thoutbot&rsquo;s Upcase program. A student of mine sent it in to me a year ago and I have used it since as a teaching tool to introduce strictly Object Orientated Programmers to face the strange&hellip; Chachachachanges&hellip;..</p>
+
+<h2 id="but-first-some-tenderlove-parsing:3c371311742d4197b845c3473589c736">But first, some Tenderlove parsing!</h2>
+
+<p>Nokogiri is the long pause in your <code>gem install</code> regimen. That pause is some c extentions being built which are needed to make it the speedy and useful tool it is.</p>
+
+<p>The excersize at hand is to take some XML from this <a href="file">www.ibiblio.org/xml/examples/shakespeare/macbeth.xml</a> and count out the spoken lines for each character appearing.</p>
+
+<h2 id="counting-in-the-counting-house-counting-out:3c371311742d4197b845c3473589c736">Counting in the counting house&hellip; counting out&hellip;</h2>
+
+<p>To get that count we will be writing a Unix program, meaning a script that is executable, takes input, returns output. We do it with Ruby and a shebang.</p>
+
+<pre><code class="language-ruby">#!/usr/bin/env ruby
+# cat macbeth.xml | xargs -0 ./lc
+</code></pre>
+
+<p>The second line there is really just a comment on how to use the program, but the first line tells the managing process which interpreter to use. This is done because the name of the utility <code>lc</code> does not have an <em>rb</em> extension.</p>
+
+<h2 id="getting-the-xml-in-question:3c371311742d4197b845c3473589c736">Getting the XML in question</h2>
+
+<p>We can either get the xml <em>realtime</em> and <em>pipe</em> it into our utility, or download the xml and then use <code>cat</code> to send it into our pipe.</p>
+
+<p>The first option looks like this:</p>
+
+<pre><code class="language-bash">curl http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml | xargs -c ./lc
+</code></pre>
+
+<p>The second:</p>
+
+<pre><code class="language-bash">curl http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml &gt; macbeth.xml
+cat macbeth.xml | xargs -c ./lc
+</code></pre>
+
+<p>Notice the common demominator here is the <em>./lc</em>.</p>
+
+<h2 id="creating-a-unix-utility-commmand:3c371311742d4197b845c3473589c736">Creating a UNIX utility commmand</h2>
+
+<p>The <em>./</em> in <em>./lc</em> means the current working directory, ie, the one you <code>cd</code> into. The filename of the command we are going to write is <code>lc</code>. Let&rsquo;s make that shit now.</p>
+
+<pre><code class="language-bash">vim lc
+</code></pre>
+
+<p>Or, create a file called <code>lc</code> in the directory you have open in the terminal. In it put:</p>
+
+<pre><code class="language-bash">#!/usr/bin/env ruby
+# cat macbeth.xml | xargs -0 ./lc
+</code></pre>
+
+<h2 id="making-that-shit-executable:3c371311742d4197b845c3473589c736">Making that shit executable</h2>
+
+<p>If you try to run it now:</p>
+
+<pre><code class="language-bash">./lc
+</code></pre>
+
+<p>You will get a permission error, that is because this file does not have permission to execute as per your login. To <em>set the executable flag</em>:</p>
+
+<pre><code class="language-bash">chmod a+x ./lc
+</code></pre>
+
+<p>Which means in <em>neckbeard</em>, make this file executable for <em>all</em> groups foo! Now run it</p>
+
+<pre><code class="language-bash">./lc
+</code></pre>
+
+<p>Nada! But that is what we want. Next add this line to the end of that <code>lc</code> file like so:</p>
+
+<pre><code class="language-bash">echo &quot;puts 'Hello from UNIX bitches!'&quot; &gt;&gt; ./lc
+</code></pre>
+
+<p>You are piping shit all over, welcome to the world of the programmer. /troll</p>
+
+<p>Next time you run it, it will print out that statement, using the Ruby <code>puts</code> method, therefore it &lsquo;works&rsquo;. Now let&rsquo;s start making it <em>useful</em>.</p>
+
+<h2 id="nokogiri-search-and-ruby-map:3c371311742d4197b845c3473589c736">Nokogiri search and Ruby map</h2>
+
+<p>Time to add some more code. Delete that last puts and make your <code>lc</code> file look like this:</p>
+
+<pre><code class="language-ruby">#!/usr/bin/env ruby
+# cat macbeth.xml | xargs -0 ./lc
+
+require 'nokogiri'
+
+doc      = Nokogiri::XML(ARGV[0])
+speeches = doc.search('SPEECH')
+speakers = doc.search('SPEAKER').map(&amp;:text).uniq
+</code></pre>
+
+<p>We <code>require</code>d nokogiri so we could reference it. Then we use nokogiri to parse the xml sent in as <code>ARGV[0]</code> into an tree based object model in order to easier extract the stuff we actually want from that giant xml file.</p>
+
+<p>The next line get all the blocks of <SPEECH>, which we need:</p>
+
+<pre><code class="language-xml">&lt;SPEECH&gt;
+  &lt;SPEAKER&gt;First Witch&lt;/SPEAKER&gt;
+  &lt;LINE&gt;When shall we three meet again&lt;/LINE&gt;
+  &lt;LINE&gt;In thunder, lightning, or in rain?&lt;/LINE&gt;
+&lt;/SPEECH&gt;
+&lt;SPEECH&gt;
+  &lt;SPEAKER&gt;Second Witch&lt;/SPEAKER&gt;
+  &lt;LINE&gt;When the hurlyburly's done,&lt;/LINE&gt;
+  &lt;LINE&gt;When the battle's lost and won.&lt;/LINE&gt;
+&lt;/SPEECH&gt;
+&lt;SPEECH&gt;
+  &lt;SPEAKER&gt;Third Witch&lt;/SPEAKER&gt;
+  &lt;LINE&gt;That will be ere the set of sun.&lt;/LINE&gt;
+&lt;/SPEECH&gt;
+&lt;SPEECH&gt;
+  &lt;SPEAKER&gt;First Witch&lt;/SPEAKER&gt;
+  &lt;LINE&gt;Where the place?&lt;/LINE&gt;
+&lt;/SPEECH&gt;
+</code></pre>
+
+<p>Next, we get a unique list of all the speakers, because we will need it later to <em>aggregate</em> the speaker lines:</p>
+
+<pre><code class="language-ruby">...
+speeches = doc.search('SPEECH')
+speakers = doc.search('SPEAKER').map(&amp;:text).uniq
+</code></pre>
+
+<h2 id="using-rubys-map-function:3c371311742d4197b845c3473589c736">Using Rubys #map function</h2>
+
+<p>I love <code>#map</code> and it&rsquo;s whole family of <em>higher order functions</em> like <code>reduce</code>, and <code>select</code> and every Highschooler&rsquo;s favorite, <code>reject</code>. This represent the best part of Ruby in my opinion.</p>
+
+<p>We need to <em>transform</em> that <code>Array</code> of nokogiri xml to be in a format for friendly for our purposes, and I have decided that the <code>Hash</code> is the perfect data structure:</p>
+
+<pre><code class="language-ruby">{ name: &quot;Bruce Lee&quot;, lines: [
+  &quot;Hey Chuck....&quot;,
+  &quot;Who's yo daddy?&quot;,
+  &quot;Come on Chucky... Say it&quot;
+] }
+</code></pre>
+
+<p>To do the transform we will use <code>map</code>, which starts with an enumerable collection, an <code>Array</code> here, and for every item in the source <code>Array</code>, a new item will be inserted into a <em>new</em> <code>Array</code>, and that new <code>Array</code> will be returned.</p>
+
+<p>That is what a <code>map</code> means in programming. Here is the code that will map that ugly xml to something more friendly:</p>
+
+<pre><code class="language-ruby">spoken_lines = speeches.map {|s| { name:  s.at('SPEAKER').text, 
+                                   lines: s.search('LINE').map(&amp;:text) } }
+</code></pre>
+
+<p>This is how we build the <code>Array</code> of <code>Hash</code>s, one has per <em>row</em> essentially, and the hash defines the <em>columns</em>, much like a database in memory.</p>
+
+<p>Now instead of a lot of data we don&rsquo;t want, in a format we don&rsquo;t like, we have a nice, homogonized block of data to play with.</p>
+
+<h2 id="i-m-getting-aggregated-here:3c371311742d4197b845c3473589c736">I&rsquo;m getting Aggregated here!</h2>
+
+<p>What the hell is an &ldquo;aggregation&rdquo;? Well I learned the term doing SQL queries, which, by the way is a great, declarative, almost functional language. It might be easier to <em>show it</em>, than to <em>describe it</em>:</p>
+
+<pre><code class="language-ruby">[
+  { name: &quot;Bruce Lee&quot;, lines: [&quot;Knock knock&quot;] },
+  { name: &quot;Chuck Norris&quot;, lines: [&quot;Who's there?&quot;] },
+  { name: &quot;Bruce Lee&quot;, lines: [&quot;Yo daaaadddddyyyyyy!&quot;] }
+]
+</code></pre>
+
+<p>This data can be aggregated to remove the <em>duplicate</em> information, which will make it a hell of a lot easier to get the count of any one speakers lines. But to do so we need to actually make a couple swipes at the problem to take it down.</p>
+
+<p>We will be <em>iterating</em> over that list of speakers we got from <em>line 8</em>, and <code>select</code> the lines that belong to each speaker.</p>
+
+<p>Imagine we are on the first <em>iteration</em>, the <code>name</code> variable would be &ldquo;Bruce Lee&rdquo;:</p>
+
+<pre><code class="language-ruby">aggregated = speakers.map do |name|
+  {
+    name: name,
+    line_count: spoken_lines.select {|l| l[:name] == name }.
+                            reduce([]) {|acc, l| acc &lt;&lt; l[:lines] }.
+                            flatten.count
+  }
+end
+=&gt; 
+</code></pre>
+
+<h2 id="hello-reduce-hope-you-guessed-my-name:3c371311742d4197b845c3473589c736">Hello Reduce, hope you guessed my name</h2>
+
+<p>This will require a bit-o-splain&rsquo;. The <code>map</code> is just a map, and on each iteration we will be returning a single <code>hash</code> with the stuff inside we be a wantin, namely the name, and a line count.</p>
+
+<p>The line count part gets a bit trickeh. Reduce is like a map, except that instead of building up a collection, it <em>reduces</em> down to a single value, even if that single value is an Array of things :)</p>
+
+<p>We will be reducing the lines that are spead around in multiple key values, into a single key-value. Ie, line_count: 42. <code>reduce</code> takes a block and it has 2 <em>block variables</em>, the <em>accumulator</em> and the <em>iterator</em>.</p>
+
+<p>The <em>accumulator</em> is the value that&hellip; yep, accumulates over the iterations. Think of it as a variable whos scope extends the lifetime of the whole iteration. Every time the iteration returns a value, that value can be &lsquo;mathed&rsquo; against the accumulator and that result will continue to the next iteration as the accumulator. Easy, right?</p>
+
+<pre><code class="language-ruby">%i[bob sue jim harry].reduce(&quot;&quot;) {|acc, name| acc = name }
+=&gt; :harry
+
+%i[bob sue jim harry].reduce(&quot;&quot;) {|acc, name| name }
+=&gt; &quot;&quot;
+
+%w[bob sue jim harry].reduce(0) {|acc, name| acc + name.chars.count }
+=&gt; 14
+</code></pre>
+
+<p>The easiest way to splain this shit is to just walk through it. So here we go:</p>
+
+<p>(iteration 1)
+acc is 0, name is bob = 0 + bob.chars.count (3) = 3</p>
+
+<p>(iteration 2)
+acc is 3, name is sue = 3 + sue.chars.count (3) = 6</p>
+
+<p>(iteration 3)
+acc is 6, name is jim = 6 + jim.chars.count (3) = 9</p>
+
+<p>(iteration 4)
+acc is 9, name is harry = 9 + harry.chars.count (5) = 14</p>
+
+<h2 id="formatting-and-printing:3c371311742d4197b845c3473589c736">Formatting and printing</h2>
+
+<p>Now that we have our values let&rsquo;s sort, format and print. We start with the sorting, which goes a little something like this:</p>
+
+<pre><code class="language-ruby">sorted = aggregated.sort {|a,b| b[:count] &lt;=&gt; a[:count] }
+</code></pre>
+
+<p>Then we format it for printing by returning the line count, followed by a tab character, followed by their name:</p>
+
+<pre><code class="language-ruby">formatted = sorted.map{|s| [s[:count], &quot;\t&quot;, s[:name]].join }.
+                   join(&quot;\n&quot;)
+</code></pre>
+
+<p>Printing is stupid simple at this point, and since we have run long I will just spit it out:</p>
+
+<pre><code class="language-ruby">puts formatted
+</code></pre>
+
+<h2 id="back-to-the-pipeline:3c371311742d4197b845c3473589c736">Back to the pipeline</h2>
+
+<p>Now, when we run our unix command pipeline:</p>
+
+<pre><code class="language-bash">curl http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml | xargs -c ./lc
+</code></pre>
+
+<p>Now we get the list of names and line counts. Isn&rsquo;t functional programming in Ruby awesome?</p>
+
+          </section>
+        </article>
+
+        
+<div class="series">
+  
+  <h4>Posts in the <b>Exploring Functional Ruby</b> series:</h4>
+  
+  
+  <ul class="other-articles">
+    
+    <li><a href="/analyzing-shakespeare-functional-ruby/">Analyzing Shakespeare using Functional Ruby</a></li>
+    
+  </ul>
+</div>
+ 
+
+
+        <div class="recommended">
+<h4>More from the <a href="https://blog.rubymentorio">RubyMentor Guides</a>:</h4>
+<ul class="other-articles">
+  <li>
+    <a href="https://guides.rubymentor.io/build-a-deck-of-cards-using-irb.html">
+      Build a Deck of Cards using IRB (and Functional Ruby!)</a>
+  </li>
+</ul>
+</div>
+
+      </div>
+    </div>
+  </div>
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
