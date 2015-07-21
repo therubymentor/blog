@@ -5,7 +5,6 @@ url: /idiomatic-ruby-2/
 series: ["Idiomatic Ruby"]
 read_in: 10 minutes
 author: Jim OKelly
-difficulty: Beginner
 title: Arrays, Multiple Assiment, and Splatting
 summary: A basic look into Idiomatic Ruby Arrays
 ---

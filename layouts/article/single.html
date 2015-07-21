@@ -9,7 +9,6 @@
           <hr>
           <ul class="entry-meta">
             <li><strong>Read Time:</strong> {{.Params.read_in}}</li>
-            <li><strong>Difficulty:</strong> {{.Params.difficulty}}</li>
             {{ if .Params.series }}
               {{ $series_name := index .Params.series 0 }}
             <li><strong>Series:</strong> {{$series_name}}</li>

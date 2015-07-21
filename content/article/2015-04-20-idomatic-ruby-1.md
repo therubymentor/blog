@@ -5,7 +5,6 @@ url: /idiomatic-Ruby-1/
 series: ["Idiomatic Ruby"]
 read_in: 10 minutes
 author: Jim OKelly
-difficulty: Beginner
 title: Introduction to Idiomatic Ruby
 summary: Writing beautiful Ruby code starts with being IDIOMATIC
 ---
