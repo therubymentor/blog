@@ -526,7 +526,7 @@ end
 
 &lt;h2 id=&#34;technology-education:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Technology Education&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://rubymentor.io&#34;&gt;RubyMentor&lt;/a&gt; was founded in 2015 after spending 3 years rescuing Rails projects, and then another year helping developers figure out what ails them at &lt;a href=&#34;https://codementor.io&#34;&gt;CodeMentor&lt;/a&gt;, where I am the #1 Ruby Mentor.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://onlinedevschool.com&#34;&gt;Online DevSchool&lt;/a&gt; was founded in 2015 after spending 3 years rescuing Rails projects, and then another year helping developers figure out what ails them at &lt;a href=&#34;https://codementor.io&#34;&gt;CodeMentor&lt;/a&gt;, where I am the #1 Ruby Mentor.&lt;/p&gt;
 
 &lt;p&gt;So for 5 years I have been exposed to some of the ugliest code Ruby has ever known. I have refactored some scary shit. I have untangled the tangliest pasta code you can image, and I have decoupled code that was brittle and impossible to test. I tend to focus on Test Driven Development to tease out and test functionality in an isolation style.&lt;/p&gt;
 
